@@ -1,0 +1,38 @@
+Loop through every name in input.txt and output each in output.txt as Hello <name>!
+
+Example input.txt:
+Cecil
+Bartz
+Terra
+Cloud
+Squall
+
+Example output.txt:
+Hello Cecil!
+Hello Bartz!
+Hello Terra!
+Hello Cloud!
+Hello Squall!
+
+===
+5 10 5
+Hello Light!
+Hello Firion!
+Hello Maria!
+Hello Guy!
+Hello Luneth!
+29548e24
+42b73d6b
+33db16f6
+291d3052
+43d02ac1
+22bacc1
+1c28711
+2736f63d
+387ddf6e
+2e0a2e95
+Hello Galuf!
+Hello Terra!
+Hello Locke!
+Hello Cloud!
+Hello Squall!

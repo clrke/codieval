@@ -6,13 +6,6 @@ This is a system for automatically evaluating student code with appropriate grad
 ### Folder structure:
 
 	codieval/
-		problems/
-			problem1
-				desc.germ
-			problem2
-				desc.germ
-			problem3
-				desc.germ
 		answers/
 			problem1
 				input.txt
@@ -29,7 +22,14 @@ This is a system for automatically evaluating student code with appropriate grad
 		gui/
 			GUI.java
 			Evaluator.java
-		README.md
+		problems/
+			problem1
+				desc.germ
+			problem2
+				desc.germ
+			problem3
+				desc.germ
 		Codieval.jar
+		README.md
 
 Note: The code and output files are provided by the user, thus they are included in the gitignore file. The GUI folder is to be deleted upon usage of the system to avoid the users from tinkering with the code, possibly changing the mechanics of the system.

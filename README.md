@@ -1,6 +1,8 @@
 Code Evaluator
 ==============
 
+This is a system for automatically evaluating student code with appropriate grades. It may also be used for programming competitions.
+
 ### Folder structure:
 
 	problems

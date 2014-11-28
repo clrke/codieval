@@ -1,0 +1,71 @@
+Number of Digits of fibonacci(n)
+=====
+Loop through each n in input.txt and output the digitCount(fibonacci(n)) of each in a text file.
+
+fibonacci(0) = 0
+fibonacci(1) = 1
+
+fibonacci(n) is defined as fibonacci(n-1) + fibonacci(n-2).
+
+fibonacci(2) = 1
+fibonacci(3) = 2
+fibonacci(4) = 3
+fibonacci(5) = 5
+fibonacci(6) = 8
+fibonacci(7) = 13
+fibonacci(8) = 21
+
+...
+
+fibonacci(12) = 144
+...and so on.
+
+digitCount(fibonacci(6)) = 1
+digitCount(fibonacci(7)) = 2
+digitCount(fibonacci(12)) = 3
+=====
+Example input.txt:
+12
+25
+90
+120
+600
+=====
+Example output.txt:
+3
+5
+19
+25
+126
+=====
+5 20 5
+3
+5
+19
+25
+126
+3ed8a
+3f0e7
+79b4a7
+208a
+20e2
+2125
+3ed47
+3f06d
+208b
+2122
+3ecb2
+79bbf1
+206f
+10c
+10c
+10c
+10c
+10c
+3ecb2
+10a
+95
+49
+14
+228
+1

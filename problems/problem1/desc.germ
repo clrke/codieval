@@ -1,21 +1,19 @@
 Hello World
+=====
 Loop through every name in input.txt and output each in output.txt as Hello <name>!
-
-Example input.txt:
+=====
 Cecil
 Bartz
 Terra
 Cloud
 Squall
-
-Example output.txt:
+=====
 Hello Cecil!
 Hello Bartz!
 Hello Terra!
 Hello Cloud!
 Hello Squall!
-
-===
+=====
 5 10 5
 Hello Light!
 Hello Firion!

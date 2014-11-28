@@ -32,6 +32,7 @@ Loop through each n in input.txt and output each in output.txt as a diamond of a
 * *
  *
 =====
+50 279 50
 *
  *
 * *
@@ -361,7 +362,7 @@ fb37d6c9
 364b79f5
 7ed8d41d
 534e2321
-2410cc9
+      * * * * * * * *
        * * * * * * *
         * * * * * *
          * * * * *

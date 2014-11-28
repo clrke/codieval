@@ -1,3 +1,4 @@
+Hello World
 Loop through every name in input.txt and output each in output.txt as Hello <name>!
 
 Example input.txt:

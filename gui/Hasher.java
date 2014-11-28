@@ -26,11 +26,10 @@ public class Hasher {
 			pw.close();
 		}
 	}
-	public static int hash(String str) {
+	public static String hash(String str) {
 		int hash = 7;
 		for (int i = 0; i < str.length(); i++)
 			hash = hash*31+str.charAt(i);
-
-		return hash;
+		return Integer.toHexString(hash);
 	}
 }

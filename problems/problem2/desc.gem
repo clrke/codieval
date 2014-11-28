@@ -1,0 +1,413 @@
+Diamond
+=====
+Loop through each n in input.txt and output each in output.txt as a diamond of asterisks with height of nx2-1.
+=====
+2
+3
+4
+3
+2
+=====
+ *
+* *
+ *
+  *
+ * *
+* * *
+ * *
+  *
+   *
+  * *
+ * * *
+* * * *
+ * * *
+  * *
+   *
+  *
+ * *
+* * *
+ * *
+  *
+ *
+* *
+ *
+=====
+*
+ *
+* *
+ *
+  *
+ * *
+* * *
+ * *
+  *
+   *
+  * *
+ * * *
+* * * *
+ * * *
+  * *
+   *
+    *
+   * *
+  * * *
+ * * * *
+* * * * *
+ * * * *
+  * * *
+   * *
+    *
+     *
+    * *
+   * * *
+  * * * *
+ * * * * *
+* * * * * *
+ * * * * *
+  * * * *
+   * * *
+    * *
+     *
+      *
+     * *
+    * * *
+   * * * *
+  * * * * *
+ * * * * * *
+* * * * * * *
+ * * * * * *
+  * * * * *
+   * * * *
+    * * *
+     * *
+      *
+       *
+7ea2d8d
+f5e407e5
+c71352e1
+d7adfcb9
+20791e35
+f53ff78d
+693c8f89
+f53ff78d
+20791e35
+d7adfcb9
+c71352e1
+f5e407e5
+7ea2d8d
+df391911
+7ea0803
+f5571cdb
+b6150257
+d01a6af
+4f8a22ab
+a421b683
+e6aa68ff
+a5204c57
+c56d553
+a5204c57
+e6aa68ff
+a421b683
+4f8a22ab
+d01a6af
+b6150257
+f5571cdb
+7ea0803
+f556f751
+b588174d
+fc035625
+84ddcca1
+d332baf9
+958c27f5
+228e25cd
+e5b42949
+de3e96a1
+51f6d09d
+de3e96a1
+e5b42949
+228e25cd
+958c27f5
+d332baf9
+84ddcca1
+fc035625
+b588174d
+f556f751
+7ea0803
+f5571cdb
+b6150257
+d01a6af
+4f8a22ab
+a421b683
+e6aa68ff
+a5204c57
+c56d553
+a5204c57
+e6aa68ff
+a421b683
+4f8a22ab
+d01a6af
+b6150257
+f5571cdb
+7ea0803
+df391911
+7ea2d8d
+f5e407e5
+c71352e1
+d7adfcb9
+20791e35
+f53ff78d
+693c8f89
+f53ff78d
+20791e35
+d7adfcb9
+c71352e1
+f5e407e5
+7ea2d8d
+df391911
+ac5cae43
+df393e9b
+8771897
+6e2586f
+91bfa8eb
+a89cf843
+71975f3f
+a89cf843
+91bfa8eb
+6e2586f
+8771897
+df393e9b
+ac5cae43
+aab8aad1
+ac5cd3cd
+dfc629a5
+19756921
+d18eae79
+62aea475
+d18eae79
+19756921
+dfc629a5
+ac5cd3cd
+aab8aad1
+dc3e483
+aab8d05b
+ace9bed7
+f0c47a2f
+e421bf2b
+f0c47a2f
+ace9bed7
+aab8d05b
+dc3e483
+71ac91
+dc40a0d
+ab45bb65
+bde80f61
+ab45bb65
+dc40a0d
+71ac91
+3aac3
+71d21b
+e50f517
+71d21b
+3aac3
+1e51
+3d04d
+1e51
+103
+dc3e483
+aab8d05b
+ace9bed7
+f0c47a2f
+e421bf2b
+f0c47a2f
+ace9bed7
+aab8d05b
+dc3e483
+3aac3
+71d21b
+e50f517
+71d21b
+3aac3
+aab8aad1
+ac5cd3cd
+dfc629a5
+19756921
+d18eae79
+62aea475
+d18eae79
+19756921
+dfc629a5
+ac5cd3cd
+aab8aad1
+df391911
+7ea2d8d
+f5e407e5
+c71352e1
+d7adfcb9
+20791e35
+f53ff78d
+693c8f89
+f53ff78d
+20791e35
+d7adfcb9
+c71352e1
+f5e407e5
+7ea2d8d
+df391911
+3aac3
+71d21b
+e50f517
+71d21b
+3aac3
+ac5cae43
+df393e9b
+8771897
+6e2586f
+91bfa8eb
+a89cf843
+71975f3f
+a89cf843
+91bfa8eb
+6e2586f
+8771897
+df393e9b
+ac5cae43
+f556f751
+b588174d
+fc035625
+84ddcca1
+d332baf9
+958c27f5
+228e25cd
+e5b42949
+de3e96a1
+51f6d09d
+de3e96a1
+e5b42949
+228e25cd
+958c27f5
+d332baf9
+84ddcca1
+fc035625
+b588174d
+f556f751
+e8657543
+2449579b
+656a1f97
+4850316f
+7e0cefeb
+45f89143
+7faee63f
+2cab7717
+76310293
+b851e2eb
+2bf444e7
+d154d4bf
+29d9ad3b
+c9d4c93
+b7423b8f
+c9d4c93
+29d9ad3b
+d154d4bf
+2bf444e7
+b851e2eb
+76310293
+2cab7717
+7faee63f
+45f89143
+7e0cefeb
+4850316f
+656a1f97
+2449579b
+e8657543
+fb764591
+7352910d
+f7881465
+f9f0d661
+80e939
+1203c1b5
+3509c40d
+22ac5309
+404ba4e1
+318b8a5d
+d9ef8bb5
+e2c267b1
+d9ef8bb5
+318b8a5d
+404ba4e1
+22ac5309
+3509c40d
+1203c1b5
+80e939
+f9f0d661
+f7881465
+7352910d
+fb764591
+f6fb03d1
+e8659acd
+24d642a5
+76687021
+12fc8779
+4efbeb75
+9716d24d
+2410cc9
+534e2321
+7ed8d41d
+364b79f5
+11e44171
+fb37d6c9
+670454c5
+fb37d6c9
+11e44171
+364b79f5
+7ed8d41d
+534e2321
+2410cc9
+       * * * * * * *
+        * * * * * *
+         * * * * *
+          * * * *
+           * * *
+            * *
+             *
+     *
+    * *
+   * * *
+  * * * *
+ * * * * *
+* * * * * *
+ * * * * *
+  * * * *
+   * * *
+    * *
+     *
+    *
+   * *
+  * * *
+ * * * *
+* * * * *
+ * * * *
+  * * *
+   * *
+    *
+  *
+ * *
+* * *
+ * *
+  *
+ *
+* *
+ *
+      *
+     * *
+    * * *
+   * * * *
+  * * * * *
+ * * * * * *
+* * * * * * *
+ * * * * * *
+  * * * * *
+   * * * *
+    * * *
+     * *
+      *
+*

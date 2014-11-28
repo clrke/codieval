@@ -32,4 +32,4 @@ This is a system for automatically evaluating student code with appropriate grad
 		Codieval.jar
 		README.md
 
-Note: The code and output files are provided by the user, thus they are included in the gitignore file. The GUI folder is to be deleted upon usage of the system to avoid the users from tinkering with the code, possibly changing the mechanics of the system.
+__Note:__ The code and output files are provided by the user, thus they are included in the gitignore file. The GUI folder is to be deleted upon usage of the system to avoid the users from tinkering with the code, possibly changing the mechanics of the system.

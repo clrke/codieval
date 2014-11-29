@@ -113,8 +113,8 @@ panel2.add(scroll);
 
 
 //container
-add(panel1, BorderLayout.NORTH);
 add(panel2, BorderLayout.SOUTH);
+add(panel1, BorderLayout.NORTH);
 panel1.setBackground(Color.LIGHT_GRAY);
 panel2.setBackground(Color.LIGHT_GRAY);
 

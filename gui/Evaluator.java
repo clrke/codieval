@@ -35,6 +35,7 @@ JPanel panel2 = new JPanel();
 //JPanel panel3 = new JPanel();
 JScrollPane scroll = new JScrollPane(ta);
 
+private File selectedFile;
 
 GridBagConstraints gbc = new GridBagConstraints();
 
@@ -156,18 +157,7 @@ btn1.addActionListener(new ActionListener() {
 			tf1.setText(filelist);
 			statusbar1.setText("You chose the program " + filelist);
 
-			try{
-				String strLine;
-				File selectedFile = chooser.getSelectedFile();
-				FileInputStream in = new FileInputStream(selectedFile);
-				BufferedReader br = new BufferedReader(new InputStreamReader(in));
-				while ((strLine = br.readLine()) != null) {
-					ta.append(strLine + "\n");
-				}
-			}catch(Exception e){
-				System.out.println("Please see\t" + e);
-			}
-
+			selectedFile = chooser.getSelectedFile();
 		}
 		else {
 			statusbar1.setText("You canceled.");
@@ -215,6 +205,16 @@ btn2.addActionListener(new ActionListener() {
 
 btn3.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent ae) {
+		try{
+			String strLine;
+			FileInputStream in = new FileInputStream(selectedFile);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			while ((strLine = br.readLine()) != null) {
+				ta.append(strLine + "\n");
+			}
+		}catch(Exception e){
+			System.out.println("Please see\t" + e);
+		}
 	}
 });
 

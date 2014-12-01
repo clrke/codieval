@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -32,6 +33,7 @@ final JLabel statusbar2 = new JLabel("");
 
 JPanel panel1 = new JPanel();
 JPanel panel2 = new JPanel();
+
 //JPanel panel3 = new JPanel();
 JScrollPane scroll = new JScrollPane(ta);
 
@@ -126,7 +128,27 @@ lbl1.setFont(myFont1);
 lbl2.setFont(myFont2);
 tf3.setFont(myFont3);
 
+ArrayList<Problem> problems = new ArrayList<Problem>();
 
+File problemsDirectory = new File("..\\problems");
+for (String name : problemsDirectory.list()) {
+	File file = new File("..\\problems\\"+name);
+	if(file.isDirectory()) {
+		try {
+			ArrayList<String> fileContents = new ArrayList<String>();
+
+			BufferedReader br = new BufferedReader(new FileReader(new File("..\\problems\\"+name+"\\desc.germ")));
+
+			for(String line = br.readLine(); line != null; line = br.readLine())
+				fileContents.add(line);
+
+			problems.add(new Problem(fileContents));
+		}
+		catch(IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
 
 btn1.addActionListener(new ActionListener() {
 

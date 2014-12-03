@@ -44,6 +44,13 @@ public class Problem {
 	public String toString() {
 		return this.title;
 	}
+
+	public String getDataString() {
+		return 	"**Title**\n" + this.title + "\n\n" +
+				"**Description**\n" + this.description + "\n\n" +
+				"**Sample Input**\n" + this.sampleInput + "\n\n" +
+				"**Sample Output**\n" + this.sampleOutput;
+	}
 }
 
 class ExpectedOutput {

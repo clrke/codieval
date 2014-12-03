@@ -1,4 +1,4 @@
-Collatz Sequence
+[EASY] Collatz Sequence
 =====
 Loop through each n in input.txt and output the collatzSequence(n) of each in output.txt. collatzSequence(n) is defined as a function that takes any integer n. If n is even, divide it by 2 to get n / 2. If n is odd, multiply it by 3 and add 1 to obtain 3n + 1. Repeat the process (which has been called "Half Or Triple Plus One", or HOTPO) indefinitely. The conjecture is that no matter what number you start with, you will always eventually reach 1. The property has also been called oneness. [Wikipedia]
 =====

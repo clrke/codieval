@@ -1,4 +1,4 @@
-Diamond
+[EASY] Diamond
 =====
 Loop through each n in input.txt and output each in output.txt as a diamond of asterisks with height of nx2-1.
 =====

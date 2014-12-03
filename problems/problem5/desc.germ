@@ -1,4 +1,4 @@
-Preorder, Inorder and Postorder
+[MEDIUM] Preorder, Inorder and Postorder
 =====
 Loop through each binary tree in input.txt (formatted as outline/tree view) and output the preorder(tree), inorder(tree) and postorder(tree) of each tree. Separate the output of each tree with a blank line.
 =====

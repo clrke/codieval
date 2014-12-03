@@ -1,4 +1,4 @@
-Number of Digits of fibonacci(n)
+[MEDIUM] Number of Digits of fibonacci(n)
 =====
 Loop through each n in input.txt and output the digitCount(fibonacci(n)) of each in a text file.
 

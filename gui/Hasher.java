@@ -1,4 +1,5 @@
 import java.io.*;
+import java.math.BigInteger;
 
 public class Hasher {
 	public static void main(String[] args) throws Exception {
@@ -27,9 +28,10 @@ public class Hasher {
 		}
 	}
 	public static String hash(String str) {
-		int hash = 7;
-		for (int i = 0; i < str.length(); i++)
-			hash = hash*31+str.charAt(i);
-		return Integer.toHexString(hash);
+		BigInteger hash = new BigInteger("7");
+		for (int i = 0; i < str.length(); i++) {
+			hash = hash.multiply(new BigInteger("31")).add(new BigInteger(((int)str.charAt(i))+""));
+		}
+		return hash.toString(16);
 	}
 }

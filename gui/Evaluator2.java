@@ -57,7 +57,7 @@ public Evaluator2() {
 
 	setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
-	setSize(1200, 600);
+	setSize(1000, 600);
 	setResizable(true);
 
 	setLayout(new BorderLayout());

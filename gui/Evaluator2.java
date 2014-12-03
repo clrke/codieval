@@ -191,8 +191,6 @@ public Evaluator2() {
 
 	btnSubmit.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
-			seconds = 0;
-			lblTime.setText(getTimeForHumans(seconds));
 
 			try{
 				String strLine;
@@ -208,7 +206,9 @@ public Evaluator2() {
 				Problem currentProblem = (Problem)listProblems.getSelectedValue();
 				String result = currentProblem.expectedOutput.compare(realityLines);
 				txtEvaluation.setText(result);
-				if(result.equals("OK!")) {
+				if(result.equals("OK!") && ! currentProblem.done) {
+					seconds = 0;
+					lblTime.setText(getTimeForHumans(seconds));
 					currentProblem.done = true;
 					listProblems.repaint();
 				}

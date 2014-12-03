@@ -116,7 +116,7 @@ public Evaluator2() {
 	pnlEvaluation.add(scrlEvaluation);
 
 	pnlSouth.add(pnlNorth, BorderLayout.NORTH);
-	pnlSouth.add(pnlEvaluation, BorderLayout.SOUTH);
+	pnlSouth.add(pnlEvaluation, BorderLayout.CENTER);
 
 	pnlCentr.add(pnlDesc);
 	pnlCentr.add(pnlSouth);
@@ -130,7 +130,7 @@ public Evaluator2() {
 	pnlEvaluation.setBackground(Color.LIGHT_GRAY);
 
 	txtDesc.setFont(myFont4);
-	txtEvaluation.setFont(myFont3);
+	txtEvaluation.setFont(myFont4);
 	txtOutputFile.setFont(myFont3);
 
 	btnOutputFile.addActionListener(new ActionListener() {
@@ -181,11 +181,16 @@ public Evaluator2() {
 				String strLine;
 				FileInputStream in = new FileInputStream(selectedFile);
 				BufferedReader br = new BufferedReader(new InputStreamReader(in));
-				txtEvaluation.setText("");
+
+				ArrayList<String> realityLines = new ArrayList<String>();
 				while ((strLine = br.readLine()) != null) {
-					txtEvaluation.append(strLine + "\n");
+					realityLines.add(strLine);
 				}
+
 				br.close();
+
+				txtEvaluation.setText(((Problem)listProblems.getSelectedValue()).expectedOutput.compare(realityLines));
+
 			}catch(Exception e){
 				System.out.println("Please see\t" + e);
 			}

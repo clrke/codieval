@@ -42,7 +42,7 @@ public class Problem {
 
 	@Override
 	public String toString() {
-		return this.title;
+		return (this.done? "*" : "") + " " + this.title;
 	}
 
 	public String getDataString() {

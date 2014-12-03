@@ -21,6 +21,7 @@ final JTextArea txtEvaluation = new JTextArea(20, 20);
 final JTextField txtOutputFile = new JTextField(20);
 final JTextArea txtDesc = new JTextArea(20, 20);
 
+ArrayList problems;
 JList listProblems = new JList();
 
 JScrollPane scrlEvaluation = new JScrollPane(txtEvaluation);
@@ -70,7 +71,7 @@ public Evaluator2() {
 	pnlEvaluation.setLayout(new GridLayout(1, 1));
 	pnlSouth.setLayout(new BorderLayout());
 
-	ArrayList problems = new ArrayList();
+	problems = new ArrayList();
 
 	File problemsDirectory = new File("..\\problems");
 	for (String name : problemsDirectory.list()) {
@@ -188,8 +189,13 @@ public Evaluator2() {
 				}
 
 				br.close();
-
-				txtEvaluation.setText(((Problem)listProblems.getSelectedValue()).expectedOutput.compare(realityLines));
+				Problem currentProblem = (Problem)listProblems.getSelectedValue();
+				String result = currentProblem.expectedOutput.compare(realityLines);
+				txtEvaluation.setText(result);
+				if(result.equals("OK!")) {
+					currentProblem.done = true;
+					listProblems.repaint();
+				}
 
 			}catch(Exception e){
 				System.out.println("Please see\t" + e);

@@ -179,13 +179,8 @@ public Evaluator2() {
 
 			int option = chooser.showOpenDialog(Evaluator2.this);
 			if (option == JFileChooser.APPROVE_OPTION) {
-				File[] sf = chooser.getSelectedFiles();
-				String filelist = "nothing";
-				if (sf.length > 0) filelist = sf[0].getName();
-				for (int i = 1; i < sf.length; i++) {
-					filelist += ", " + sf[i].getName();
-				}
-				txtOutputFile.setText(filelist);
+				File sf = chooser.getSelectedFile();
+				txtOutputFile.setText(sf.getName());
 				selectedFile = chooser.getSelectedFile();
 			}
 		}

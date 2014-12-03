@@ -7,6 +7,8 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import java.nio.file.*;
+
 public class Evaluator2 extends JFrame {
 
 Font myFont1 = new Font("Verdana", Font.BOLD, 20);
@@ -14,6 +16,7 @@ Font myFont2 = new Font("Verdana", Font.BOLD, 16);
 Font myFont3 = new Font("SansSerif", Font.BOLD, 13);
 Font myFont4 = new Font("Consolas", Font.BOLD, 14);
 
+JButton btnInputFile = new JButton("Save input file as");
 JButton btnOutputFile = new JButton("Choose output file:");
 JButton btnSubmit = new JButton("Submit");
 
@@ -86,7 +89,7 @@ public Evaluator2() {
 					fileContents.add(line);
 
 				br.close();
-				problems.add(new Problem(fileContents));
+				problems.add(new Problem(FileSystems.getDefault().getPath("..\\problems\\"+name, "input.txt"), fileContents));
 			}
 			catch(IOException e) {
 				System.out.println(e.getMessage());
@@ -105,6 +108,7 @@ public Evaluator2() {
 
 	pnlWest.add(scrlProblems);
 
+	pnlSubmit.add(btnInputFile);
 	pnlSubmit.add(btnOutputFile);
 	pnlSubmit.add(txtOutputFile);
 	pnlSubmit.add(btnSubmit);
@@ -134,6 +138,28 @@ public Evaluator2() {
 	txtEvaluation.setFont(myFont4);
 	txtOutputFile.setFont(myFont3);
 
+	btnInputFile.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent ae) {
+			JFileChooser chooser = new JFileChooser();
+			chooser.setSelectedFile(new File("input.txt"));
+			chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+				public boolean accept(File f) {
+					return f.getName().toLowerCase().endsWith(".txt")||f.isDirectory();
+				}
+				public String getDescription() {
+					return "Textfile";
+				}
+			});
+			if(chooser.showSaveDialog(Evaluator2.this) == JFileChooser.APPROVE_OPTION) {
+				try {
+					Files.copy(((Problem)listProblems.getSelectedValue()).inputFilePath, new FileOutputStream(chooser.getSelectedFile()));
+				}
+				catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+	});
 	btnOutputFile.addActionListener(new ActionListener() {
 
 		public void actionPerformed(ActionEvent ae) {

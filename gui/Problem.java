@@ -1,14 +1,19 @@
 import java.util.ArrayList;
+import java.io.*;
+import java.nio.file.*;
 
 public class Problem {
 	public String title;
 	public String description;
 	public String sampleInput;
 	public String sampleOutput;
+	public Path inputFilePath;
 	public ExpectedOutput expectedOutput;
 	public boolean done;
 
-	public Problem(ArrayList<String> fileContents) {
+	public Problem(Path inputFilePath, ArrayList<String> fileContents) {
+		this.inputFilePath = inputFilePath;
+
 		int i = 0;
 		for (; ! fileContents.get(i).equals("====="); i++)
 			this.title = this.title != null? this.title + "\n" + fileContents.get(i) : fileContents.get(i);

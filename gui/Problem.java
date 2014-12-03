@@ -57,8 +57,10 @@ class ExpectedOutput {
 	public String[] plain1;
 	public String[] encrypted;
 	public String[] plain2;
+	public int size;
 
 	public ExpectedOutput(ArrayList<String> expectedOutput) {
+		this.size = expectedOutput.size();
 		String[] countsString = expectedOutput.get(0).split(" ");
 		int[] counts = new int[countsString.length];
 

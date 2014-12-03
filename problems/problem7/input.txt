@@ -1,0 +1,137 @@
+20
+40 5
+Posted a pic of me!
+#starbucks 20
+#picture 15
+#stolen 5
+#swag 25
+#nice 10
+60 6
+Can't wait for Christmas!
+#christmas 50
+#vacation 40
+#gifts 20
+#birthdayNiMoi 4
+#decorations 35
+#jolly 20
+60 3
+Just finished watching the Legend of Korra!
+#kuvira 40
+#korra 15
+#battarjs 50
+70 6
+Can't wait for Christmas!
+#christmas 50
+#vacation 40
+#gifts 20
+#birthdayNiMoi 4
+#decorations 35
+#jolly 20
+61 3
+Just finished watching the Legend of Korra!
+#kuvira 40
+#korra 15
+#battarjs 50
+50 5
+Posted a pic of me!
+#starbucks 20
+#picture 15
+#stolen 5
+#swag 25
+#nice 10
+55 3
+Just finished watching the Legend of Korra!
+#kuvira 40
+#korra 15
+#battarjs 50
+68 4
+Here at CSEd Week Programming Competition!
+#mananaloKami 100
+#pogi 25
+#hardNa 60
+#pogiKami 80
+70 4
+Here at CSEd Week Programming Competition!
+#mananaloKami 100
+#pogi 25
+#hardNa 60
+#pogiKami 80
+100 9
+Too easy for me.
+#helloWorld 50
+#diamond 45
+#collatzSequence 40
+#fibonacciSequence 35
+#preorderInorderPostorder 30
+#teamQueue 25
+#hashtagSwag 20
+#allYourBase 15
+#chinsStroke 10
+40 5
+Posted a pic of me!
+#starbucks 20
+#picture 15
+#stolen 5
+#swag 25
+#nice 10
+60 6
+Can't wait for Christmas!
+#christmas 50
+#vacation 40
+#gifts 20
+#birthdayNiMoi 4
+#decorations 35
+#jolly 20
+60 3
+Just finished watching the Legend of Korra!
+#kuvira 40
+#korra 15
+#battarjs 50
+70 6
+Can't wait for Christmas!
+#christmas 50
+#vacation 40
+#gifts 20
+#birthdayNiMoi 4
+#decorations 35
+#jolly 20
+61 3
+Just finished watching the Legend of Korra!
+#kuvira 40
+#korra 15
+#battarjs 50
+50 5
+Posted a pic of me!
+#starbucks 20
+#picture 15
+#stolen 5
+#swag 25
+#nice 10
+55 3
+Just finished watching the Legend of Korra!
+#kuvira 40
+#korra 15
+#battarjs 50
+68 4
+Here at CSEd Week Programming Competition!
+#mananaloKami 100
+#pogi 25
+#hardNa 60
+#pogiKami 80
+70 4
+Here at CSEd Week Programming Competition!
+#mananaloKami 100
+#pogi 25
+#hardNa 60
+#pogiKami 80
+100 9
+Too easy for me.
+#helloWorld 50
+#diamond 45
+#collatzSequence 40
+#fibonacciSequence 35
+#preorderInorderPostorder 30
+#teamQueue 25
+#hashtagSwag 20
+#allYourBase 15
+#chinsStroke 10

@@ -1,0 +1,51 @@
+[HARD] #swag
+=====
+When posting a tweet in Twitter, you can think of a lot of hashtags for your post. You can think of 20 hashtags if you wanted to! Sadly, there is a character limit, so not all hashtags can fit into your tweet. However, you can rank each hashtag based on how badly you want your hashtag to be in the final cut of your tweet and choose from there on.
+
+You have been tasked to create a tweet optimizer. Given a limited number of characters per tweet, identify which hashtags should be included in the final tweet based on their priority values. Remember to put a space to seperate the post and hashtags.
+
+Your program should read the first line of an input file as the number of tweets T, then for each T as tweet t, read a line for the character limit and number of hashtags H, seperated by a space, then read the next line for the actual post, then lastly, for each hashtag H in tweet t, read the next line for its contents and its respective priority value.
+
+Your program should output in a textfile the optimized tweet for each t in tweets T.
+=====
+2
+40 5
+Posted a pic of me!
+#starbucks 20
+#picture 15
+#stolen 5
+#swag 25
+#nice 10
+60 6
+Can't wait for Christmas!
+#christmas 50
+#vacation 40
+#gifts 20
+#birthdayNiMoi 4
+#decorations 35
+#jolly 20
+=====
+Posted a pic of me! #picture #swag #nice
+Can't wait for Christmas! #christmas #vacation #gifts #jolly
+=====
+2 16 2
+Posted a pic of me! #picture #swag #nice
+Can't wait for Christmas! #christmas #vacation #gifts #jolly
+16a742fe58a40a21e0bc52daf612b70279e5f6fef3c1f72925795fd63a3bb11994d334b61101
+48f3ffc6957621009c3a93b0797bb361bb4a0bac40a9b2647894d67908e9776a8b964ffaef10f2c1248
+2be411cccbbdd3a1a36ce0883cc44294cc2d8e8df847cedfb89b29af10e359623f91315051b00
+4a613c2ae3758eaf2895e7ca4d1f4a9c8e1f03fe82582f27c85d47214
+389512bc8ccd1aeda4b8f2b1b73cfbaa9d22f3e891285d55950896d4d73cbfbbc71
+4a41e087e6120c45a5b9c138dc2a2aaead700fffdbc89e33b377ab3d2cc1f4270b6dbef350ca9983a90
+4166b9dccef233a018124c41283bd10a2afbb56e611a56d222db88d083b7454ce29b40fc37ff23d10b7febbf
+e75f93b7d0e378e4cf234cd54a02c5dff4e6b00b099ff6f0252f80ca47225680fc2f5912c8298f289f13bbc667d7d00889982cab42b2a34c8e92827c7
+2b9684c0d136c46c472e25f49e08587544e1a66cba79ab670b9
+1610c4041e8fc8d24a0d2bfe5b7eb4b2d99d9b654adb544eab057b8474a6e2853d3bda5b8fd9
+16a742fe58a40a21e0bc52daf612b70279e5f6fef3c1f72925795fd63a3bb11994d334b61101
+48f3ffc6957621009c3a93b0797bb361bb4a0bac40a9b2647894d67908e9776a8b964ffaef10f2c1248
+2be411cccbbdd3a1a36ce0883cc44294cc2d8e8df847cedfb89b29af10e359623f91315051b00
+4a613c2ae3758eaf2895e7ca4d1f4a9c8e1f03fe82582f27c85d47214
+389512bc8ccd1aeda4b8f2b1b73cfbaa9d22f3e891285d55950896d4d73cbfbbc71
+4a41e087e6120c45a5b9c138dc2a2aaead700fffdbc89e33b377ab3d2cc1f4270b6dbef350ca9983a90
+Here at CSEd Week Programming Competition! #mananaloKami #pogi #hardNa
+Too easy for me. #helloWorld #diamond #collatzSequence #fibonacciSequence #teamQueue #hashtagSwag

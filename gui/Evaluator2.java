@@ -39,6 +39,7 @@ JPanel pnlCentr = new JPanel();
 JPanel pnlSouth = new JPanel();
 JPanel pnlEvaluation = new JPanel();
 
+JFileChooser chooser = new JFileChooser();
 private File selectedFile;
 
 JLabel lblTime = new JLabel();
@@ -140,7 +141,6 @@ public Evaluator2() {
 
 	btnInputFile.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
-			JFileChooser chooser = new JFileChooser();
 			chooser.setSelectedFile(new File("input.txt"));
 			chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
 				public boolean accept(File f) {
@@ -163,9 +163,6 @@ public Evaluator2() {
 	btnOutputFile.addActionListener(new ActionListener() {
 
 		public void actionPerformed(ActionEvent ae) {
-
-			JFileChooser chooser = new JFileChooser();
-
 			chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
 				public boolean accept(File f) {
 					return f.getName().toLowerCase().endsWith(".txt")||f.isDirectory();
@@ -175,7 +172,6 @@ public Evaluator2() {
 					return "Textfiles";
 				}
 			});
-
 
 			int option = chooser.showOpenDialog(Evaluator2.this);
 			if (option == JFileChooser.APPROVE_OPTION) {

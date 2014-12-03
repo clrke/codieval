@@ -52,7 +52,7 @@ Timer timer = new Timer(1000, new ActionListener() {
 public Evaluator2() {
 	super("CODE EVALUATOR");
 
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
 	setSize(700, 500);
 	setResizable(true);

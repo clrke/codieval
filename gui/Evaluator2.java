@@ -165,7 +165,6 @@ public Evaluator2() {
 		public void actionPerformed(ActionEvent ae) {
 
 			JFileChooser chooser = new JFileChooser();
-			chooser.setMultiSelectionEnabled(true);
 
 			chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
 				public boolean accept(File f) {

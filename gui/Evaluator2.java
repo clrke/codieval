@@ -14,8 +14,8 @@ Font myFont2 = new Font("Verdana", Font.BOLD, 16);
 Font myFont3 = new Font("SansSerif", Font.BOLD, 13);
 Font myFont4 = new Font("Consolas", Font.BOLD, 14);
 
-JButton btnOutputFile = new JButton("CHOOSE");
-JButton btnSubmit = new JButton("SUBMIT");
+JButton btnOutputFile = new JButton("Choose output file:");
+JButton btnSubmit = new JButton("Submit");
 
 final JTextArea txtEvaluation = new JTextArea(20, 20);
 final JTextField txtOutputFile = new JTextField(20);

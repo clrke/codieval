@@ -7,6 +7,7 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import java.nio.charset.*;
 import java.nio.file.*;
 
 public class Evaluator2 extends JFrame {
@@ -19,6 +20,7 @@ Font myFont4 = new Font("Consolas", Font.BOLD, 14);
 JButton btnInputFile = new JButton("Save input file as");
 JButton btnOutputFile = new JButton("Choose output file:");
 JButton btnSubmit = new JButton("Submit");
+JButton btnRequirements = new JButton("View Requirements");
 
 final JTextArea txtEvaluation = new JTextArea(20, 20);
 final JTextField txtOutputFile = new JTextField(20);
@@ -127,6 +129,7 @@ public Evaluator2() {
 	pnlSouth.add(pnlNorth, BorderLayout.NORTH);
 	pnlSouth.add(pnlEvaluation, BorderLayout.CENTER);
 
+	pnlOptions.add(btnRequirements);
 	pnlOptions.add(lblTime);
 
 	pnlDescOptions.add(pnlDesc, BorderLayout.CENTER);
@@ -187,6 +190,21 @@ public Evaluator2() {
 				txtOutputFile.setText(sf.getName());
 				selectedFile = chooser.getSelectedFile();
 			}
+		}
+	});
+
+	btnRequirements.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent ae) {
+			setFocusableWindowState(false);
+
+			Problem problem = ((Problem)listProblems.getSelectedValue());
+			try {
+				new Requirements(problem.title, "Input:\n" +  new String(Files.readAllBytes(problem.inputFilePath), StandardCharsets.UTF_8), "Output:\n" + problem.expectedOutput.toString());
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+			setFocusableWindowState(true);
 		}
 	});
 

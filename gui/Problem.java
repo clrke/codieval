@@ -124,4 +124,23 @@ class ExpectedOutput {
 
 		return additionalErrors + "OK!";
 	}
+
+	@Override
+	public String toString() {
+		String str = "";
+		for (String plain : plain1) {
+			str += plain + "\n";
+		}
+		str += 	" .\n .\n .\n" +
+				"=================================\n" +
+				"=================================\n" +
+				"============"+encrypted.length+" lines OMITTED=====\n" +
+				"=================================\n" +
+				"=================================\n" +
+				" .\n .\n .\n";
+		for (String plain : plain2) {
+			str += plain + "\n";
+		}
+		return str;
+	}
 }

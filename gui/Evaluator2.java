@@ -223,8 +223,8 @@ public Evaluator2() {
 	}
 
 	public String getTimeForHumans(int seconds) {
-		int hours = seconds / 360;
-		int minutes = (seconds % 360) / 60;
+		int hours = seconds / 3600;
+		int minutes = (seconds % 3600) / 60;
 		seconds = (seconds % 60);
 
 		return String.format("%02d:%02d:%02d", hours, minutes, seconds);

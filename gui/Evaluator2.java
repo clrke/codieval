@@ -31,7 +31,9 @@ JScrollPane scrlEvaluation = new JScrollPane(txtEvaluation);
 JScrollPane scrlProblems;
 JScrollPane scrlDesc = new JScrollPane(txtDesc, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
+JPanel pnlDescOptions = new JPanel();
 JPanel pnlDesc = new JPanel();
+JPanel pnlOptions = new JPanel();
 JPanel pnlSubmit = new JPanel();
 JPanel pnlWest = new JPanel();
 JPanel pnlNorth = new JPanel();
@@ -71,7 +73,9 @@ public Evaluator2() {
 	pnlNorth.setLayout(new GridLayout(1, 1));
 	pnlCentr.setLayout(new GridLayout(2, 1));
 	pnlSubmit.setLayout(new FlowLayout());
+	pnlDescOptions.setLayout(new BorderLayout());
 	pnlDesc.setLayout(new GridLayout(1, 1));
+	pnlOptions.setLayout(new FlowLayout());
 	pnlEvaluation.setLayout(new GridLayout(1, 1));
 	pnlSouth.setLayout(new BorderLayout());
 
@@ -113,7 +117,6 @@ public Evaluator2() {
 	pnlSubmit.add(btnOutputFile);
 	pnlSubmit.add(txtOutputFile);
 	pnlSubmit.add(btnSubmit);
-	pnlSubmit.add(lblTime);
 
 	pnlNorth.add(pnlSubmit);
 
@@ -124,7 +127,12 @@ public Evaluator2() {
 	pnlSouth.add(pnlNorth, BorderLayout.NORTH);
 	pnlSouth.add(pnlEvaluation, BorderLayout.CENTER);
 
-	pnlCentr.add(pnlDesc);
+	pnlOptions.add(lblTime);
+
+	pnlDescOptions.add(pnlDesc, BorderLayout.CENTER);
+	pnlDescOptions.add(pnlOptions, BorderLayout.SOUTH);
+
+	pnlCentr.add(pnlDescOptions);
 	pnlCentr.add(pnlSouth);
 
 	add(pnlWest, BorderLayout.WEST);

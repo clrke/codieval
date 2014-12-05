@@ -198,7 +198,6 @@ public Evaluator2() {
 			setFocusableWindowState(false);
 
 			Problem problem = ((Problem)listProblems.getSelectedValue());
-			System.out.println(problem.inputFilePath);
 			try {
 				new Requirements(problem.title, "Input:\n" +  new String(Files.readAllBytes(problem.inputFilePath), StandardCharsets.UTF_8), "Output:\n" + problem.expectedOutput.toString());
 			}

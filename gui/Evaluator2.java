@@ -44,7 +44,7 @@ JPanel pnlEvaluation = new JPanel();
 JFileChooser chooser = new JFileChooser();
 private File selectedFile;
 
-JLabel lblTime = new JLabel();
+JLabel lblTime = new JLabel("Timer: " + getTimeForHumans(0));
 
 int seconds = 0;
 

@@ -51,7 +51,7 @@ int seconds = 0;
 Timer timer = new Timer(1000, new ActionListener() {
 	public void actionPerformed(ActionEvent ae) {
 		seconds++;
-		lblTime.setText(getTimeForHumans(seconds));
+		lblTime.setText("Timer: " + getTimeForHumans(seconds));
 	}
 });
 
@@ -216,7 +216,7 @@ public Evaluator2() {
 				txtEvaluation.setText(result);
 				if(result.equals("OK!") && ! currentProblem.done) {
 					seconds = 0;
-					lblTime.setText(getTimeForHumans(seconds));
+					lblTime.setText("Timer: " + getTimeForHumans(seconds));
 					currentProblem.done = true;
 					listProblems.repaint();
 				}

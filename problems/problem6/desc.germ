@@ -10,7 +10,7 @@ Input
 
 The input file will contain one or more test cases. Each test case begins with the number of teams t (1 < t < 1000). Then t team descriptions follow, each one consisting of the number of elements belonging to the team and the elements themselves. Elements are integers in the range 0 - 999999. A team may consist of up to 1000 elements.
 
-Finally, a list of commands follows. There are three dierent kinds of commands:
+Finally, a list of commands follows. There are three different kinds of commands:
 
 ENQUEUE x - enter element x into the team queue
 DEQUEUE - process the first element and remove it from the queue

@@ -17,6 +17,7 @@ Font myFont2 = new Font("Verdana", Font.BOLD, 16);
 Font myFont3 = new Font("SansSerif", Font.BOLD, 13);
 Font myFont4 = new Font("Consolas", Font.BOLD, 14);
 
+JButton btnSampleInputFile = new JButton("Save sample input file as");
 JButton btnInputFile = new JButton("Save input file as");
 JButton btnOutputFile = new JButton("Choose output file:");
 JButton btnSubmit = new JButton("Submit");
@@ -129,6 +130,7 @@ public Evaluator2() {
 	pnlSouth.add(pnlNorth, BorderLayout.NORTH);
 	pnlSouth.add(pnlEvaluation, BorderLayout.CENTER);
 
+	pnlOptions.add(btnSampleInputFile);
 	pnlOptions.add(btnRequirements);
 	pnlOptions.add(lblTime);
 
@@ -150,6 +152,29 @@ public Evaluator2() {
 	txtEvaluation.setFont(myFont4);
 	txtOutputFile.setFont(myFont3);
 
+	btnSampleInputFile.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent ae) {
+			chooser.setSelectedFile(new File("sample_input.txt"));
+			chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+				public boolean accept(File f) {
+					return f.getName().toLowerCase().endsWith(".txt")||f.isDirectory();
+				}
+				public String getDescription() {
+					return "Textfile";
+				}
+			});
+			if(chooser.showSaveDialog(Evaluator2.this) == JFileChooser.APPROVE_OPTION) {
+				try {
+					PrintWriter writer = new PrintWriter(new FileWriter(chooser.getSelectedFile()));
+					writer.println(((Problem)listProblems.getSelectedValue()).sampleInput);
+					writer.close();
+				}
+				catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+	});
 	btnInputFile.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
 			chooser.setSelectedFile(new File("input.txt"));

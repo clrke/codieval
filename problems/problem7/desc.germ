@@ -4,7 +4,7 @@ When posting a tweet in Twitter, you can think of a lot of hashtags for your pos
 
 You have been tasked to create a tweet optimizer. Given a limited number of characters per tweet, identify which hashtags should be included in the final tweet based on their priority values. Remember to put a space to seperate the post and hashtags.
 
-Your program should read the first line of an input file as the number of tweets T, then for each T as tweet t, read a line for the character limit and number of hashtags H, seperated by a space, then read the next line for the actual post, then lastly, for each hashtag H in tweet t, read the next line for its contents and its respective priority value.
+Your program should read the first line of an input file as the number of tweets T, then for each T as tweet t, read a line for the character limit and number of hashtags H, seperated by a space, then read the next line for the actual post, then lastly, for each hashtag h in hashtags H of tweet t, read the next line for its contents and its respective priority value.
 
 Your program should output in a textfile the optimized tweet for each t in tweets T.
 =====

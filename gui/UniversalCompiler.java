@@ -48,7 +48,7 @@ public class UniversalCompiler {
 		}
 	}
 
-	public static String[] getCommandCompile(String programmingLanguage, String fileToCompile) {
+	private static String[] getCommandCompile(String programmingLanguage, String fileToCompile) {
 		switch(programmingLanguage.toLowerCase()) {
 			case "java": 	return new String[]{"javac", fileToCompile + ".java"};
 			case "c": 		return new String[]{"gcc", "-o", fileToCompile, fileToCompile + ".c"};
@@ -57,7 +57,7 @@ public class UniversalCompiler {
 		}
 	}
 
-	public static String[] getCommandRun(String programmingLanguage, String fileToRun) {
+	private static String[] getCommandRun(String programmingLanguage, String fileToRun) {
 		switch(programmingLanguage.toLowerCase()) {
 			case "java": 	return new String[]{"java", fileToRun};
 			case "c": 		return new String[]{fileToRun};

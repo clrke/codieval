@@ -33,7 +33,12 @@ public class UniversalCompiler {
 		}
 		else {
 			String[] commands2 = getCommandRun(programmingLanguage, filename);
+			switch(programmingLanguage.toLowerCase()) {
+				case "c":
+				case "c#": commands2[0] = dir + "\\" + commands2[0];
+			}
 			Process proc = rt.exec(commands2, null, new File(dir));
+
 			BufferedReader stdInput = new BufferedReader(new
 				InputStreamReader(proc.getInputStream()));
 			BufferedReader stdError = new BufferedReader(new

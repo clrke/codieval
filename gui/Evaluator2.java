@@ -45,11 +45,17 @@ JPanel pnlNorth = new JPanel();
 JPanel pnlCentr = new JPanel();
 JPanel pnlSouth = new JPanel();
 JPanel pnlEvaluation = new JPanel();
+JPanel pnlLanguage = new JPanel();
+JPanel pnlCompiler = new JPanel();
 
 JFileChooser chooser = new JFileChooser();
 private File selectedFile;
 
+JLabel lblLanguage = new JLabel("Choose your language: ");
 JLabel lblTime = new JLabel("PROBLEMS [ Timer: " + getTimeForHumans(0) + " ]");
+JLabel lblCompiler = new JLabel("C Compiler: gcc [ FOUND ]");
+
+JComboBox cmbLanguage = new JComboBox(new String[] {"C", "Java", "C#", "Python"});
 
 int seconds = 0;
 
@@ -78,6 +84,7 @@ public Evaluator2() {
 	pnlWest.setLayout(new BorderLayout());
 	pnlProblems.setLayout(new GridLayout(1, 1));
 	pnlTimer.setLayout(new FlowLayout());
+	pnlLanguage.setLayout(new FlowLayout());
 	pnlNorth.setLayout(new GridLayout(1, 1));
 	pnlCentr.setLayout(new GridLayout(2, 1));
 	pnlSubmit.setLayout(new FlowLayout());
@@ -123,8 +130,12 @@ public Evaluator2() {
 
 	pnlTimer.add(lblTime);
 
-	pnlWest.add(pnlProblems, BorderLayout.CENTER);
+	pnlLanguage.add(lblLanguage);
+	pnlLanguage.add(cmbLanguage);
+
 	pnlWest.add(pnlTimer, BorderLayout.NORTH);
+	pnlWest.add(pnlProblems, BorderLayout.CENTER);
+	pnlWest.add(pnlLanguage, BorderLayout.SOUTH);
 
 	pnlSubmit.add(btnOutputFile);
 	pnlSubmit.add(txtOutputFile);
@@ -136,8 +147,11 @@ public Evaluator2() {
 
 	pnlEvaluation.add(scrlEvaluation);
 
+	pnlCompiler.add(lblCompiler);
+
 	pnlSouth.add(pnlNorth, BorderLayout.NORTH);
 	pnlSouth.add(pnlEvaluation, BorderLayout.CENTER);
+	pnlSouth.add(pnlCompiler, BorderLayout.SOUTH);
 
 	pnlOptions.add(btnRequirements);
 	pnlOptions.add(btnSampleInputFile);
@@ -239,6 +253,12 @@ public Evaluator2() {
 				System.out.println(e.getMessage());
 			}
 			setFocusableWindowState(true);
+		}
+	});
+
+	cmbLanguage.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent ae) {
+			lblCompiler.setText(cmbLanguage.getSelectedItem() + " Compiler: unknown");
 		}
 	});
 

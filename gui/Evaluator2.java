@@ -19,7 +19,7 @@ Font myFont4 = new Font("Consolas", Font.BOLD, 14);
 
 JButton btnSampleInputFile = new JButton("Export sample input file");
 JButton btnInputFile = new JButton("Export input file");
-JButton btnOutputFile = new JButton("Import output file");
+JButton btnOutputFile = new JButton("Import source code");
 JButton btnSubmit = new JButton("Submit");
 JButton btnRequirements = new JButton("View Requirements");
 
@@ -225,11 +225,11 @@ public Evaluator2() {
 		public void actionPerformed(ActionEvent ae) {
 			chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
 				public boolean accept(File f) {
-					return f.getName().toLowerCase().endsWith(".txt")||f.isDirectory();
+					return true;
 				}
 
 				public String getDescription() {
-					return "Textfiles";
+					return cmbLanguage.getSelectedItem() + " source codes";
 				}
 			});
 
@@ -272,17 +272,17 @@ public Evaluator2() {
 	btnSubmit.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
 
-			try{
-				String strLine;
-				FileInputStream in = new FileInputStream(selectedFile);
-				BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
+			try {
 				ArrayList<String> realityLines = new ArrayList<String>();
-				while ((strLine = br.readLine()) != null) {
-					realityLines.add(strLine);
+
+				String dir = selectedFile.getParent();
+				String programmingLanguage = cmbLanguage.getSelectedItem().toString();
+				String filename = selectedFile.getName();
+
+				for (String line : UniversalCompiler.compileAndRun(dir, programmingLanguage, filename).split("\n")) {
+					realityLines.add(line);
 				}
 
-				br.close();
 				Problem currentProblem = (Problem)listProblems.getSelectedValue();
 				String result = currentProblem.expectedOutput.compare(realityLines);
 				txtEvaluation.setText(result);
@@ -292,9 +292,13 @@ public Evaluator2() {
 					currentProblem.done = true;
 					listProblems.repaint();
 				}
-
-			}catch(Exception e){
-				System.out.println("Please see\t" + e);
+			}
+			catch(IOException e) {
+				txtEvaluation.setText("Error: Compiler not found");
+				System.out.println(e.getMessage());
+			}
+			catch(CompilationErrorException error) {
+				txtEvaluation.setText(error.toString());
 			}
 		}
 	});

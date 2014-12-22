@@ -12,13 +12,10 @@ namespace HelloWorld
         {
             using (StreamReader reader = new StreamReader("input.txt"))
             {
-                using (StreamWriter writer = new StreamWriter("output.txt"))
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        writer.WriteLine(String.Format("Hello {0}!", line));
-                    }
+                    Console.WriteLine(String.Format("Hello {0}!", line));
                 }
             }
         }

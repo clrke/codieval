@@ -235,9 +235,8 @@ public Evaluator2() {
 
 			int option = chooser.showOpenDialog(Evaluator2.this);
 			if (option == JFileChooser.APPROVE_OPTION) {
-				File sf = chooser.getSelectedFile();
-				txtOutputFile.setText(sf.getName());
 				selectedFile = chooser.getSelectedFile();
+				txtOutputFile.setText(selectedFile.getAbsolutePath());
 			}
 		}
 	});

@@ -66,4 +66,49 @@ public class UniversalCompiler {
 			default: return new String[]{""};
 		}
 	}
+
+	public static String getCompiler(String programmingLanguage) {
+		switch(programmingLanguage.toLowerCase()) {
+			case "java":	return getCompilerVersion("javac");
+			case "c":		return getCompilerVersion("gcc");
+			case "c#":		return getCompilerVersion("csc");
+			case "python":	return getCompilerVersion("python");
+			default: return "unknown";
+		}
+	}
+
+	public static String getCompilerVersion(String compiler) {
+		Runtime rt = Runtime.getRuntime();
+		String[] commands = {compiler, getVersionArgument(compiler)};
+
+		try {
+			Process proc = rt.exec(commands);
+
+			BufferedReader stdInput = new BufferedReader(new
+				InputStreamReader(proc.getInputStream()));
+
+			BufferedReader stdError = new BufferedReader(new
+				InputStreamReader(proc.getErrorStream()));
+
+			String s = null;
+			s = stdInput.readLine();
+
+			if(s == null)
+				s = stdError.readLine();
+
+			return s;
+		}
+		catch(IOException e) {
+			return "Error: Compiler not found (" + compiler + ")";
+		}
+	}
+
+	public static String getVersionArgument(String compiler) {
+		switch(compiler.toLowerCase()) {
+			case "javac":
+				return "-version";
+			default:
+				return "--version";
+		}
+	}
 }

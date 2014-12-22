@@ -53,9 +53,10 @@ private File selectedFile;
 
 JLabel lblLanguage = new JLabel("Choose your language: ");
 JLabel lblTime = new JLabel("PROBLEMS [ Timer: " + getTimeForHumans(0) + " ]");
-JLabel lblCompiler = new JLabel("C Compiler: gcc [ FOUND ]");
 
 JComboBox cmbLanguage = new JComboBox(new String[] {"C", "Java", "C#", "Python"});
+
+JLabel lblCompiler = new JLabel(UniversalCompiler.getCompiler("C"));
 
 int seconds = 0;
 
@@ -258,7 +259,7 @@ public Evaluator2() {
 
 	cmbLanguage.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
-			lblCompiler.setText(cmbLanguage.getSelectedItem() + " Compiler: unknown");
+			lblCompiler.setText(UniversalCompiler.getCompiler(cmbLanguage.getSelectedItem().toString()));
 		}
 	});
 

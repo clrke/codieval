@@ -17,9 +17,9 @@ Font myFont2 = new Font("Verdana", Font.BOLD, 16);
 Font myFont3 = new Font("SansSerif", Font.BOLD, 13);
 Font myFont4 = new Font("Consolas", Font.BOLD, 14);
 
-JButton btnSampleInputFile = new JButton("Save sample input file as");
-JButton btnInputFile = new JButton("Save input file as");
-JButton btnOutputFile = new JButton("Choose output file:");
+JButton btnSampleInputFile = new JButton("Export sample input file");
+JButton btnInputFile = new JButton("Export input file");
+JButton btnOutputFile = new JButton("Import output file");
 JButton btnSubmit = new JButton("Submit");
 JButton btnRequirements = new JButton("View Requirements");
 
@@ -38,6 +38,8 @@ JPanel pnlDescOptions = new JPanel();
 JPanel pnlDesc = new JPanel();
 JPanel pnlOptions = new JPanel();
 JPanel pnlSubmit = new JPanel();
+JPanel pnlProblems = new JPanel();
+JPanel pnlTimer = new JPanel();
 JPanel pnlWest = new JPanel();
 JPanel pnlNorth = new JPanel();
 JPanel pnlCentr = new JPanel();
@@ -47,14 +49,14 @@ JPanel pnlEvaluation = new JPanel();
 JFileChooser chooser = new JFileChooser();
 private File selectedFile;
 
-JLabel lblTime = new JLabel("Timer: " + getTimeForHumans(0));
+JLabel lblTime = new JLabel("PROBLEMS [ Timer: " + getTimeForHumans(0) + " ]");
 
 int seconds = 0;
 
 Timer timer = new Timer(1000, new ActionListener() {
 	public void actionPerformed(ActionEvent ae) {
 		seconds++;
-		lblTime.setText("Timer: " + getTimeForHumans(seconds));
+		lblTime.setText("PROBLEMS [ Timer: " + getTimeForHumans(seconds) + " ]");
 	}
 });
 
@@ -71,8 +73,11 @@ public Evaluator2() {
 	txtEvaluation.setEditable(false);
 	txtDesc.setEditable(false);
 	txtOutputFile.setForeground(Color.BLUE);
+	txtOutputFile.setEditable(false);
 
-	pnlWest.setLayout(new GridLayout(1, 1));
+	pnlWest.setLayout(new BorderLayout());
+	pnlProblems.setLayout(new GridLayout(1, 1));
+	pnlTimer.setLayout(new FlowLayout());
 	pnlNorth.setLayout(new GridLayout(1, 1));
 	pnlCentr.setLayout(new GridLayout(2, 1));
 	pnlSubmit.setLayout(new FlowLayout());
@@ -114,9 +119,13 @@ public Evaluator2() {
 
 	scrlProblems = new JScrollPane(listProblems);
 
-	pnlWest.add(scrlProblems);
+	pnlProblems.add(scrlProblems);
 
-	pnlSubmit.add(btnInputFile);
+	pnlTimer.add(lblTime);
+
+	pnlWest.add(pnlProblems, BorderLayout.CENTER);
+	pnlWest.add(pnlTimer, BorderLayout.NORTH);
+
 	pnlSubmit.add(btnOutputFile);
 	pnlSubmit.add(txtOutputFile);
 	pnlSubmit.add(btnSubmit);
@@ -130,9 +139,9 @@ public Evaluator2() {
 	pnlSouth.add(pnlNorth, BorderLayout.NORTH);
 	pnlSouth.add(pnlEvaluation, BorderLayout.CENTER);
 
-	pnlOptions.add(btnSampleInputFile);
 	pnlOptions.add(btnRequirements);
-	pnlOptions.add(lblTime);
+	pnlOptions.add(btnSampleInputFile);
+	pnlOptions.add(btnInputFile);
 
 	pnlDescOptions.add(pnlDesc, BorderLayout.CENTER);
 	pnlDescOptions.add(pnlOptions, BorderLayout.SOUTH);
@@ -143,7 +152,7 @@ public Evaluator2() {
 	add(pnlWest, BorderLayout.WEST);
 	add(pnlCentr, BorderLayout.CENTER);
 
-	pnlWest.setBackground(Color.LIGHT_GRAY);
+	pnlProblems.setBackground(Color.LIGHT_GRAY);
 	pnlNorth.setBackground(Color.LIGHT_GRAY);
 	pnlCentr.setBackground(Color.LIGHT_GRAY);
 	pnlEvaluation.setBackground(Color.LIGHT_GRAY);
@@ -259,7 +268,7 @@ public Evaluator2() {
 				txtEvaluation.setText(result);
 				if(result.equals("OK!") && ! currentProblem.done) {
 					seconds = 0;
-					lblTime.setText("Timer: " + getTimeForHumans(seconds));
+					lblTime.setText("PROBLEMS [ Timer: " + getTimeForHumans(seconds) + " ]");
 					currentProblem.done = true;
 					listProblems.repaint();
 				}

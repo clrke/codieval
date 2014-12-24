@@ -1,5 +1,9 @@
 [HARD] Chin's Strokes
 =====
+A stroke is a line drawn without lifting the pen.
+
+A triangle can be drawn in one stroke of a pen.
+
 The letter T can be done in two strokes of your pen: one for the horizontal part and one for the vertical. The letter H can be done in three. In the letter E, however, you have multiple choices, two of which are: [1] to write the top first (right to left), then the vertical (up to down), then the bottom (left to right), then the middle(left to right), which yields 2 strokes, or [2] to write the vertical(up to down), then the bottom(left to right), then the top(left to right), then the middle(left to right), which yields 3 strokes. Either way you finish writing the letter E, but the former is definitely the most optimized way.
 
 The letter T has 4 nodes with 3 connections. The four nodes are as follows: the upper left most point, the upper right most point, the bottom point, and the intersection. All of the first 3 mentioned nodes are connected to the intersection.

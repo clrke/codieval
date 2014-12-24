@@ -138,6 +138,8 @@ public Evaluator2() {
 	pnlWest.add(pnlProblems, BorderLayout.CENTER);
 	pnlWest.add(pnlLanguage, BorderLayout.SOUTH);
 
+	btnSubmit.setEnabled(false);
+
 	pnlSubmit.add(btnOutputFile);
 	pnlSubmit.add(txtOutputFile);
 	pnlSubmit.add(btnSubmit);
@@ -237,6 +239,7 @@ public Evaluator2() {
 			if (option == JFileChooser.APPROVE_OPTION) {
 				selectedFile = chooser.getSelectedFile();
 				txtOutputFile.setText(selectedFile.getAbsolutePath());
+				btnSubmit.setEnabled(true);
 			}
 		}
 	});
@@ -258,7 +261,13 @@ public Evaluator2() {
 
 	cmbLanguage.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
-			lblCompiler.setText(UniversalCompiler.getCompiler(cmbLanguage.getSelectedItem().toString()));
+			String compilerVersion = UniversalCompiler.getCompiler(cmbLanguage.getSelectedItem().toString());
+			lblCompiler.setText(compilerVersion);
+
+			if(compilerVersion.startsWith("Error"))
+				btnSubmit.setEnabled(false);
+			else if(selectedFile != null)
+				btnSubmit.setEnabled(true);
 		}
 	});
 

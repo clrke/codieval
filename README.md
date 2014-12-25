@@ -3,6 +3,21 @@ Code Evaluator
 
 This is a system for automatically evaluating student code with appropriate grades. It may also be used for programming competitions.
 
+### Installation
+
+Clone this repo using:
+
+	$ git clone http://github.com/arkeidolon/codieval
+	
+Install the following compilers (ignore the programming languages you don't need):
+
+	C      - gcc           - https://gcc.gnu.org/
+	C#     - csc           - http://msdn.microsoft.com/en-us/library/dd831853.aspx
+	Java   - javac & java  - http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	Python - python        - https://www.python.org/downloads/
+	
+Make sure to include the compilers' directories to the system PATH.
+
 ### Folder structure:
 
 	codieval/

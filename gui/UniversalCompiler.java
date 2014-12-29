@@ -35,7 +35,7 @@ public class UniversalCompiler {
 			String[] commands2 = getCommandRun(programmingLanguage, filename);
 			switch(programmingLanguage.toLowerCase()) {
 				case "c":
-				case "c#": commands2[0] = dir + "\\" + commands2[0];
+				case "c#": commands2[0] = dir + "/" + commands2[0];
 			}
 			Process proc = rt.exec(commands2, null, new File(dir));
 

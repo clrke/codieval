@@ -1,11 +1,17 @@
 import java.io.*;
 
 public class UniversalCompiler {
+	public static long elapsedTime(long startTime) {
+		return System.currentTimeMillis()-startTime;
+	}
 	public static String compileAndRun(String dir, String programmingLanguage, String filename) throws IOException, CompilationErrorException {
 		boolean error = false;
 		String[] commands = getCommandCompile(programmingLanguage, filename);
 
 		String result = "";
+
+		long maxTime = 10000;
+		long startTime = System.currentTimeMillis();
 
 		if(commands != null) {
 			ProcessBuilder pb = new ProcessBuilder(commands);
@@ -20,13 +26,21 @@ public class UniversalCompiler {
 
 			String s = null;
 			while ((s = stdInput.readLine()) != null) {
+				if(elapsedTime(startTime) > maxTime)
+					throw new CompilationErrorException("Error! Compile time is more than 10 seconds");
+
 				System.out.println(s);
 			}
 
 			while ((s = stdError.readLine()) != null) {
+				if(elapsedTime(startTime) > maxTime)
+					throw new CompilationErrorException("Error! Compile time is more than 10 seconds");
+
 				result += s + "\n";
 				error = true;
 			}
+
+			System.out.println("Compile time: " + elapsedTime(startTime) + "ms");
 		}
 
 		if(error) {
@@ -49,13 +63,21 @@ public class UniversalCompiler {
 
 			String s = null;
 			while ((s = stdInput.readLine()) != null) {
+				if(elapsedTime(startTime) > maxTime)
+					throw new CompilationErrorException("Error! Runtime is more than 10 seconds");
+
 				result += s + "\n";
 			}
 
 			while ((s = stdError.readLine()) != null) {
+				if(elapsedTime(startTime) > maxTime)
+					throw new CompilationErrorException("Error! Runtime is more than 10 seconds");
+
 				result += s + "\n";
 			}
+			System.out.println("Runtime: " + elapsedTime(startTime) + "ms");
 		}
+		System.out.println();
 		return result;
 	}
 

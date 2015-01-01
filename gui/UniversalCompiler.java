@@ -2,14 +2,15 @@ import java.io.*;
 
 public class UniversalCompiler {
 	public static String compileAndRun(String dir, String programmingLanguage, String filename) throws IOException, CompilationErrorException {
-		Runtime rt = Runtime.getRuntime();
 		boolean error = false;
 		String[] commands = getCommandCompile(programmingLanguage, filename);
 
 		String result = "";
 
 		if(commands != null) {
-			Process proc = rt.exec(commands, null, new File(dir));
+			ProcessBuilder pb = new ProcessBuilder(commands);
+			pb.directory(new File(dir));
+			Process proc = pb.start();
 
 			BufferedReader stdInput = new BufferedReader(new
 				InputStreamReader(proc.getInputStream()));
@@ -37,7 +38,9 @@ public class UniversalCompiler {
 				case "c":
 				case "c#": commands2[0] = dir + "/" + commands2[0];
 			}
-			Process proc = rt.exec(commands2, null, new File(dir));
+			ProcessBuilder pb = new ProcessBuilder(commands2);
+			pb.directory(new File(dir));
+			Process proc = pb.start();
 
 			BufferedReader stdInput = new BufferedReader(new
 				InputStreamReader(proc.getInputStream()));

@@ -4,6 +4,17 @@ public class UniversalCompiler {
 	public static long elapsedTime(long startTime) {
 		return System.currentTimeMillis()-startTime;
 	}
+
+	public static boolean isAlive(Process p) {
+	    try
+	    {
+	        p.exitValue();
+	        return false;
+	    } catch (IllegalThreadStateException e) {
+	        return true;
+	    }
+	}
+
 	public static String compileAndRun(String dir, String programmingLanguage, String filename) throws IOException, CompilationErrorException {
 		boolean error = false;
 		String[] commands = getCommandCompile(programmingLanguage, filename);
@@ -24,18 +35,24 @@ public class UniversalCompiler {
 			BufferedReader stdError = new BufferedReader(new
 				InputStreamReader(proc.getErrorStream()));
 
+			try {
+				while(isAlive(proc) && elapsedTime(startTime) < maxTime)
+					Thread.sleep(100);
+
+				if(elapsedTime(startTime) >= maxTime) {
+					proc.destroy();
+					throw new CompilationErrorException("Error! Compile time took more than 10 seconds");
+				}
+			} catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+
 			String s = null;
 			while ((s = stdInput.readLine()) != null) {
-				if(elapsedTime(startTime) > maxTime)
-					throw new CompilationErrorException("Error! Compile time is more than 10 seconds");
-
 				System.out.println(s);
 			}
 
 			while ((s = stdError.readLine()) != null) {
-				if(elapsedTime(startTime) > maxTime)
-					throw new CompilationErrorException("Error! Compile time is more than 10 seconds");
-
 				result += s + "\n";
 				error = true;
 			}
@@ -61,18 +78,24 @@ public class UniversalCompiler {
 			BufferedReader stdError = new BufferedReader(new
 				InputStreamReader(proc.getErrorStream()));
 
+			try {
+				while(isAlive(proc) && elapsedTime(startTime) < maxTime)
+					Thread.sleep(100);
+
+				if(elapsedTime(startTime) >= maxTime) {
+					proc.destroy();
+					throw new CompilationErrorException("Error! Runtime took more than 10 seconds");
+				}
+			} catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+
 			String s = null;
 			while ((s = stdInput.readLine()) != null) {
-				if(elapsedTime(startTime) > maxTime)
-					throw new CompilationErrorException("Error! Runtime is more than 10 seconds");
-
 				result += s + "\n";
 			}
 
 			while ((s = stdError.readLine()) != null) {
-				if(elapsedTime(startTime) > maxTime)
-					throw new CompilationErrorException("Error! Runtime is more than 10 seconds");
-
 				result += s + "\n";
 			}
 			System.out.println("Runtime: " + elapsedTime(startTime) + "ms");

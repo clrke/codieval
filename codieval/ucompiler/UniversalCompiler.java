@@ -81,10 +81,14 @@ public class UniversalCompiler {
 				InputStreamReader(proc.getInputStream()));
 			BufferedReader stdError = new BufferedReader(new
 				InputStreamReader(proc.getErrorStream()));
+			PrintWriter stdOutput = new PrintWriter(new
+				OutputStreamWriter(proc.getOutputStream()));
 
 			try {
-				while(isAlive(proc) && elapsedTime(startTime) < maxTime)
+				while(isAlive(proc) && elapsedTime(startTime) < maxTime) {
+					stdOutput.write("\n\r");
 					Thread.sleep(1);
+				}
 
 				if(elapsedTime(startTime) >= maxTime) {
 					proc.destroy();

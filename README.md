@@ -13,7 +13,7 @@ Install the following compilers (ignore the programming languages you don't need
 
 | Programming Languages | Compilers used by Codieval | Recommended download links |
 | --------------------- | -------------------------- | -------------------------- |
-| C		        | gcc			     | https://gcc.gnu.org/releases.html       |
+| C		        | gcc			     | https://gcc.gnu.org/releases.html or http://sourceforge.net/projects/mingw/files/latest/download?source=files       |
 | C#    	        | csc			     | http://msdn.microsoft.com/en-us/library/dd831853.aspx |
 | Java		        | javac & java		     | http://www.oracle.com/technetwork/java/javase/downloads/index.html |
 | Python	        | python		     | https://www.python.org/downloads/ |

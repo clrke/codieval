@@ -17,8 +17,6 @@ public class ProblemsManager extends JFrame {
 
 	ArrayList<Problem> problems;
 
-	JList<Problem> listProblems;
-
 	JPanel pnlSearch = new JPanel(new FlowLayout());
 	JPanel pnlProblems = new JPanel(new GridLayout(9, 1));
 	JPanel pnlAddProblem = new JPanel(new FlowLayout());
@@ -54,12 +52,6 @@ public class ProblemsManager extends JFrame {
 				}
 			}
 		}
-
-		Problem[] problemsArray = new Problem[problems.size()];
-		problemsArray = problems.toArray(problemsArray);
-		listProblems = new JList<Problem>(problemsArray);
-
-		listProblems.setSelectedIndex(0);
 
 		for(Problem problem : problems)
 			pnlProblems.add(new ProblemPanel(problem));

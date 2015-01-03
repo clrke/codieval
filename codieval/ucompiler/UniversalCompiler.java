@@ -25,7 +25,7 @@ public class UniversalCompiler {
 
 		String result = "";
 
-		long maxTime = 10000;
+		long maxTime = 20000;
 		long startTime = System.currentTimeMillis();
 
 		if(commands != null) {
@@ -45,7 +45,7 @@ public class UniversalCompiler {
 
 				if(elapsedTime(startTime) >= maxTime) {
 					proc.destroy();
-					throw new CompilationErrorException("Error! Compile time took more than 10 seconds");
+					throw new CompilationErrorException("Error! Compile time took more than 20 seconds");
 				}
 			} catch(InterruptedException e) {
 				e.printStackTrace();
@@ -88,7 +88,7 @@ public class UniversalCompiler {
 
 				if(elapsedTime(startTime) >= maxTime) {
 					proc.destroy();
-					throw new CompilationErrorException("Error! Runtime took more than 10 seconds");
+					throw new CompilationErrorException("Error! Runtime took more than 20 seconds");
 				}
 			} catch(InterruptedException e) {
 				e.printStackTrace();

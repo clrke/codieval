@@ -39,7 +39,7 @@ public class UniversalCompiler {
 
 			try {
 				while(isAlive(proc) && elapsedTime(startTime) < maxTime)
-					Thread.sleep(100);
+					Thread.sleep(1);
 
 				if(elapsedTime(startTime) >= maxTime) {
 					proc.destroy();
@@ -82,7 +82,7 @@ public class UniversalCompiler {
 
 			try {
 				while(isAlive(proc) && elapsedTime(startTime) < maxTime)
-					Thread.sleep(100);
+					Thread.sleep(1);
 
 				if(elapsedTime(startTime) >= maxTime) {
 					proc.destroy();

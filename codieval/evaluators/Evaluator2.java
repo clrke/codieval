@@ -9,7 +9,6 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-import java.nio.charset.*;
 import java.nio.file.*;
 
 import codieval.exceptions.CompilationErrorException;
@@ -28,7 +27,7 @@ JButton btnSampleInputFile = new JButton("Export sample input file");
 JButton btnInputFile = new JButton("Export input file");
 JButton btnOutputFile = new JButton("Import source code");
 JButton btnSubmit = new JButton("Submit");
-JButton btnRequirements = new JButton("View Requirements");
+JButton btnRequirements = new JButton("More Information");
 
 final JTextArea txtEvaluation = new JTextArea(20, 20);
 final JTextField txtOutputFile = new JTextField(20);
@@ -257,7 +256,7 @@ public Evaluator2() {
 
 			Problem problem = ((Problem)listProblems.getSelectedValue());
 			try {
-				new Requirements(problem.title, "Input:\n" +  new String(Files.readAllBytes(problem.inputFilePath), StandardCharsets.UTF_8), "Output:\n" + problem.expectedOutput.toString());
+				new Requirements(problem);
 			}
 			catch(Exception e) {
 				System.out.println(e.getMessage());

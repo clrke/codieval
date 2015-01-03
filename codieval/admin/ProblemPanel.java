@@ -31,7 +31,7 @@ public class ProblemPanel extends JPanel {
 				catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
-				// frame.setFocusableWindowState(true);
+				frame.setFocusableWindowState(true);
 			}
 		});
 		add(btnInfo);

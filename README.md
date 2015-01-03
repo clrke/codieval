@@ -83,6 +83,13 @@ After compiling, on the __codieval root folder__, run
 
 	$ jar cfm codieval.jar manifest.mf codieval/*/*.class
 
+### How to open admin interface
+
+On the __codieval root folder__, compile and run codieval/admin/ProblemsManager.java:
+
+	$ javac codieval/admin/ProblemsManager.java
+	$ java codieval.admin.ProblemsManager
+
 ### Deployment
 
 After making a jar file, delete the codieval/ folder containing all the source codes, to avoid the users from tinkering with the code and recompiling it, possibly changing the mechanics of the system.

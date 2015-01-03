@@ -1,3 +1,5 @@
+package gui;
+
 import java.util.ArrayList;
 
 import java.awt.*;

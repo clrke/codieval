@@ -20,34 +20,47 @@ Install the following compilers (ignore the programming languages you don't need
 
 Make sure to include the compilers' directories to the system PATH.
 
-### Folder structure:
+### Folder structure
 
 	codieval/
 		answers/
 			problem1
 				input.txt
 				Problem1.java*
-				output.txt*
 			problem2
 				input.txt
 				problem2.c*
-				output.txt*
 			problem3
 				input.txt
 				problem3.py*
-				output.txt*
-		gui/
-			GUI.java
-			Evaluator.java
+		codieval/
+			evaluators/
+				Evaluator.java
+				Evaluator2.java
+			exceptions/
+				CompilationErrorException.java
+			hasher/
+				Hasher.java
+			problem/
+				ExpectedOutput.java
+				Problem.java
+				Requirements.java
+			ucompiler/
+				UniversalCompiler.java
 		problems/
 			problem1
 				desc.germ
+				input.txt
 			problem2
 				desc.germ
+				input.txt
 			problem3
 				desc.germ
+				input.txt
 		Codieval.jar
 		README.md
+
+__Note:__ The * means that naming the user's source codes and is up to the user.
 
 ### How to compile
 

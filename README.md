@@ -8,7 +8,7 @@ This is a system for automatically evaluating student code with appropriate grad
 Clone this repo using:
 
 	$ git clone http://github.com/arkeidolon/codieval
-	
+
 Install the following compilers (ignore the programming languages you don't need):
 
 | Programming Languages | Compilers used by Codieval | Recommended download links |
@@ -17,7 +17,7 @@ Install the following compilers (ignore the programming languages you don't need
 | C#    	        | csc			     | http://msdn.microsoft.com/en-us/library/dd831853.aspx |
 | Jav		        | javac & java		     | http://www.oracle.com/technetwork/java/javase/downloads/index.html |
 | Python	        | python		     | https://www.python.org/downloads/ |
-	
+
 Make sure to include the compilers' directories to the system PATH.
 
 ### Folder structure:
@@ -49,4 +49,24 @@ Make sure to include the compilers' directories to the system PATH.
 		Codieval.jar
 		README.md
 
-__Note:__ The code and output files are provided by the user, thus they are included in the gitignore file. The GUI folder is to be deleted upon usage of the system to avoid the users from tinkering with the code, possibly changing the mechanics of the system.
+### How to compile
+
+On the __codieval root folder__, run
+
+	$ javac codieval/evaluators/Evaluator2.java
+
+### How to run
+
+After compiling, on the __codieval root folder__, run
+
+	$ java codieval.evaluators.Evaluator2
+
+### How to make jar file
+
+After compiling, on the __codieval root folder__, run
+
+	$ jar cfm codieval.jar manifest.mf codieval/*/*.class
+
+### Deployment
+
+After making a jar file, delete the codieval/ folder containing all the source codes, to avoid the users from tinkering with the code and recompiling it, possibly changing the mechanics of the system.

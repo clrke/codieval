@@ -34,6 +34,9 @@ Make sure to include the compilers' directories to the system PATH.
 				input.txt
 				problem3.py*
 		codieval/
+			admin/
+				ProblemPanel.java
+				ProblemsManager.java
 			evaluators/
 				Evaluator.java
 				Evaluator2.java

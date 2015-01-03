@@ -1,6 +1,8 @@
-package gui;
+package codieval.ucompiler;
 
 import java.io.*;
+
+import codieval.exceptions.CompilationErrorException;
 
 public class UniversalCompiler {
 	public static long elapsedTime(long startTime) {

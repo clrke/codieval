@@ -1,6 +1,6 @@
-package gui;
+package codieval.exceptions;
 
-class CompilationErrorException extends Exception {
+public class CompilationErrorException extends Exception {
 	private String message;
 	public CompilationErrorException(String message) {
 		this.message = message;

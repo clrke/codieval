@@ -1,4 +1,4 @@
-package gui;
+package codieval.evaluators;
 
 import java.util.ArrayList;
 
@@ -11,6 +11,11 @@ import javax.swing.event.*;
 
 import java.nio.charset.*;
 import java.nio.file.*;
+
+import codieval.exceptions.CompilationErrorException;
+import codieval.problem.*;
+import codieval.ucompiler.UniversalCompiler;
+import codieval.hasher.Hasher;
 
 public class Evaluator2 extends JFrame {
 

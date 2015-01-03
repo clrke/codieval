@@ -1,4 +1,4 @@
-package gui;
+package codieval.problem;
 
 import java.awt.*;
 import java.awt.event.*;

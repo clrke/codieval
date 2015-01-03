@@ -1,4 +1,4 @@
-package gui;
+package codieval.evaluators;
 
 import java.util.ArrayList;
 

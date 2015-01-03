@@ -1,4 +1,4 @@
-package gui;
+package codieval.hasher;
 
 import java.io.*;
 import java.math.BigInteger;

@@ -1,2 +1,2 @@
-Main-Class: Evaluator2
+Main-Class: codieval.evaluators.Evaluator2
 

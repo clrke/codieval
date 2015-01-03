@@ -17,9 +17,14 @@ public class ProblemsManager extends JFrame {
 
 	ArrayList<Problem> problems;
 
+	GridLayout lytProblems = new GridLayout(1, 1);
+
 	JPanel pnlSearch = new JPanel(new FlowLayout());
-	JPanel pnlProblems = new JPanel(new GridLayout(9, 1));
+	JPanel pnlProblems = new JPanel(lytProblems);
 	JPanel pnlAddProblem = new JPanel(new FlowLayout());
+
+	JTextField txtSearch = new JTextField(20);
+	JButton btnSearch = new JButton("Search");
 
 	JScrollPane scrlProblems = new JScrollPane(pnlProblems);
 
@@ -53,11 +58,25 @@ public class ProblemsManager extends JFrame {
 			}
 		}
 
+		lytProblems.setRows(problems.size());
+
 		for(Problem problem : problems)
 			pnlProblems.add(new ProblemPanel(problem));
 
-		pnlSearch.add(new JTextField(20));
-		pnlSearch.add(new JButton("Search"));
+		txtSearch.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae) {
+				search(txtSearch.getText());
+			}
+		});
+
+		btnSearch.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae) {
+				search(txtSearch.getText());
+			}
+		});
+
+		pnlSearch.add(txtSearch);
+		pnlSearch.add(btnSearch);
 
 		pnlAddProblem.add(new JButton("New Problem"));
 
@@ -68,6 +87,23 @@ public class ProblemsManager extends JFrame {
 		setSize(400, 400);
 		setResizable(true);
 		setVisible(true);
+	}
+
+	public void search(String query) {
+		 ArrayList<Problem> problemsSearched = new ArrayList<Problem>();
+		for (Problem problem : problems) {
+			if(problem.title.contains(query))
+				problemsSearched.add(problem);
+		}
+
+		pnlProblems.removeAll();
+
+		lytProblems.setRows(problemsSearched.size());
+
+		for(Problem problem : problemsSearched)
+			pnlProblems.add(new ProblemPanel(problem));
+
+		pnlProblems.updateUI();
 	}
 	public static void main(String[] args) {
 		new ProblemsManager();

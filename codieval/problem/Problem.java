@@ -13,6 +13,7 @@ public class Problem {
 	public ExpectedOutput expectedOutput;
 	public boolean done;
 	public float correctness;
+	public float grade;
 
 	public Problem(Path inputFilePath, ArrayList<String> fileContents) {
 		this.inputFilePath = inputFilePath;
@@ -39,6 +40,7 @@ public class Problem {
 
 		this.done = false;
 		this.correctness = -1;
+		this.grade = -1;
 	}
 
 	public Problem(String title, String description, String sampleInput, String sampleOutput) {
@@ -48,11 +50,12 @@ public class Problem {
 		this.sampleOutput = sampleOutput;
 		this.done = false;
 		this.correctness = -1;
+		this.grade = -1;
 	}
 
 	@Override
 	public String toString() {
-		return " " + (correctness != -1? String.format("%.2f%% ", correctness) : "") + (this.done? "* " : "") + this.title;
+		return " " + (grade != -1? String.format("%.2f ", grade) : "") + (this.done? "* " : "") + this.title;
 	}
 
 	public String getDataString() {
@@ -60,5 +63,33 @@ public class Problem {
 				"**Description**\n" + this.description + "\n\n" +
 				"**Sample Input**\n" + this.sampleInput + "\n\n" +
 				"**Sample Output**\n" + this.sampleOutput;
+	}
+
+	public void setCorrectness(float correctness) {
+		this.correctness = correctness;
+		this.grade = getEquivalentGrade(correctness);
+	}
+
+	public float getEquivalentGrade(float correctness) {
+		if(correctness < 75)
+			return 5.00f;
+		if(correctness < 76)
+			return 3.00f;
+		if(correctness < 79)
+			return 2.75f;
+		if(correctness < 82)
+			return 2.5f;
+		if(correctness < 85)
+			return 2.25f;
+		if(correctness < 88)
+			return 2f;
+		if(correctness < 91)
+			return 1.75f;
+		if(correctness < 94)
+			return 1.5f;
+		if(correctness < 97)
+			return 1.25f;
+		else
+			return 1f;
 	}
 }

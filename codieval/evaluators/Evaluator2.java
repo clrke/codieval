@@ -308,7 +308,10 @@ public Evaluator2(String eventName, final boolean competition) {
 					listProblems.repaint();
 				}
 				if( ! competition) {
-					currentProblem.correctness = currentProblem.expectedOutput.getCorrectness(realityLines)/2 + 50;
+					currentProblem.setCorrectness(currentProblem.expectedOutput.getCorrectness(realityLines)/2 + 50);
+
+					txtEvaluation.setText(String.format(result +"\n\n%.2f%% = %.2f", currentProblem.correctness, currentProblem.grade));
+
 					listProblems.repaint();
 				}
 			}

@@ -3,6 +3,9 @@ package codieval.problem;
 import codieval.hasher.Hasher;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+
+import name.fraser.neil.plaintext.diff_match_patch;
 
 public class ExpectedOutput {
 	public String[] plain1;
@@ -82,6 +85,47 @@ public class ExpectedOutput {
 			return additionalErrors + errors;
 		else
 			return "OK!";
+	}
+
+	public float getCorrectness(ArrayList<String> realityOutput) {
+		float totalDiff = 0;
+
+		for (int i = 0; i < plain1.length; i++)
+			if(i < realityOutput.size())
+				totalDiff += getSimilarity(plain1[i], realityOutput.get(i));
+			else
+				totalDiff += 0;
+
+		for (int i = 0; i < encrypted.length; i++)
+			if(plain1.length+i < realityOutput.size())
+				totalDiff += getSimilarity(encrypted[i], Hasher.hash(realityOutput.get(plain1.length+i)));
+			else
+				totalDiff += 0;
+
+		for (int i = 0; i < plain2.length; i++)
+			if(plain1.length+encrypted.length+i < realityOutput.size())
+				totalDiff += getSimilarity(plain2[i], realityOutput.get(plain1.length+encrypted.length+i));
+			else
+				totalDiff += 0;
+
+		return totalDiff / size;
+	}
+
+	public float getSimilarity(String s1, String s2) {
+		diff_match_patch diffGetter = new diff_match_patch();
+		LinkedList differences = diffGetter.diff_main(s1, s2);
+		int differencesCount = diffGetter.diff_levenshtein(differences);
+
+		int maxLength = Math.max(Math.max(s1.length(), s2.length()), differencesCount);
+
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(differencesCount);
+		System.out.println(s1.length());
+		System.out.println(100 - (float)differencesCount/(maxLength == 0? 1: maxLength) * 100);
+		System.out.println("=========");
+
+		return 100 - (float)differencesCount/(maxLength == 0? 1: maxLength) * 100;
 	}
 
 	@Override

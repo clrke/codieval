@@ -307,6 +307,10 @@ public Evaluator2(String eventName, final boolean competition) {
 					currentProblem.done = true;
 					listProblems.repaint();
 				}
+				if( ! competition) {
+					currentProblem.correctness = currentProblem.expectedOutput.getCorrectness(realityLines)/2 + 50;
+					listProblems.repaint();
+				}
 			}
 			catch(IOException e) {
 				txtEvaluation.setText("Error: Compiler not found");

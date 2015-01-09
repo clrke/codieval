@@ -12,6 +12,7 @@ public class Problem {
 	public Path inputFilePath;
 	public ExpectedOutput expectedOutput;
 	public boolean done;
+	public float correctness;
 
 	public Problem(Path inputFilePath, ArrayList<String> fileContents) {
 		this.inputFilePath = inputFilePath;
@@ -37,6 +38,7 @@ public class Problem {
 		this.expectedOutput = new ExpectedOutput(expectedOutput);
 
 		this.done = false;
+		this.correctness = -1;
 	}
 
 	public Problem(String title, String description, String sampleInput, String sampleOutput) {
@@ -45,11 +47,12 @@ public class Problem {
 		this.sampleInput = sampleInput;
 		this.sampleOutput = sampleOutput;
 		this.done = false;
+		this.correctness = -1;
 	}
 
 	@Override
 	public String toString() {
-		return (this.done? "*" : "") + " " + this.title;
+		return " " + (correctness != -1? String.format("%.2f%% ", correctness) : "") + (this.done? "* " : "") + this.title;
 	}
 
 	public String getDataString() {

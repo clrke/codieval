@@ -73,8 +73,8 @@ Timer timer = new Timer(1000, new ActionListener() {
 	}
 });
 
-public Evaluator2() {
-	super("CODE EVALUATOR");
+public Evaluator2(String eventName, boolean competition) {
+	super("CODE EVALUATOR " + (!eventName.equals("")?"[ "+eventName+" ]":"") + (competition?" (COMPETITION MODE)":""));
 
 	setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
@@ -329,7 +329,17 @@ public Evaluator2() {
 		return String.format("%02d:%02d:%02d", hours, minutes, seconds);
 	}
 	public static void main(String args[]) {
-		Evaluator2 sfc = new Evaluator2();
+		String eventName = "";
+		boolean competition = false;
+
+		if(args.length > 0) {
+			eventName = args[0];
+			if(args.length > 1) {
+				competition = true;
+			}
+		}
+
+		Evaluator2 sfc = new Evaluator2(eventName, competition);
 		sfc.setVisible(true);
 	}
 }

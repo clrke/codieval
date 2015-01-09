@@ -73,7 +73,7 @@ Timer timer = new Timer(1000, new ActionListener() {
 	}
 });
 
-public Evaluator2(String eventName, boolean competition) {
+public Evaluator2(String eventName, final boolean competition) {
 	super("CODE EVALUATOR " + (!eventName.equals("")?"[ "+eventName+" ]":"") + (competition?" (COMPETITION MODE)":""));
 
 	setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -299,7 +299,7 @@ public Evaluator2(String eventName, boolean competition) {
 				}
 
 				Problem currentProblem = (Problem)listProblems.getSelectedValue();
-				String result = currentProblem.expectedOutput.compare(realityLines);
+				String result = currentProblem.expectedOutput.compare(realityLines, competition);
 				txtEvaluation.setText(result);
 				if(result.equals("OK!") && ! currentProblem.done) {
 					seconds = 0;

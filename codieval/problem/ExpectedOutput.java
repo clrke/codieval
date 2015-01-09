@@ -33,9 +33,10 @@ public class ExpectedOutput {
 			plain2[i] = expectedOutput.get(i+counts[0]+counts[1]+1);
 	}
 
-	public String compare(ArrayList<String> realityOutput) {
+	public String compare(ArrayList<String> realityOutput, boolean competition) {
 		String additionalErrors = "";
 		String errors = "";
+		String error = "";
 
 		if(this.size != realityOutput.size())
 			additionalErrors = "**Textfile line count**\n" +
@@ -44,32 +45,41 @@ public class ExpectedOutput {
 
 		for (int i = 0; i < plain1.length && i < realityOutput.size(); i++)
 			if( ! plain1[i].equals(realityOutput.get(i))) {
-				errors = "**Error at line " + (i+1) + "**\n" +
+				error = "**Error at line " + (i+1) + "**\n" +
 					"Expected: \"" + plain1[i] + "\"\n" +
-					"Reality:  \"" + realityOutput.get(i) + "\"";
+					"Reality:  \"" + realityOutput.get(i) + "\"\n\n";
 
-				return additionalErrors + errors;
+				if( ! competition)
+					errors += error;
+				else
+					return additionalErrors + error;
 			}
 
 		for (int i = 0; i < encrypted.length && plain1.length+i < realityOutput.size(); i++)
 			if( ! encrypted[i].equals(Hasher.hash(realityOutput.get(plain1.length+i)))) {
-				errors = "**Error at line " + (plain1.length+i+1) + "**\n" +
-					"\"" + realityOutput.get(plain1.length+i) + "\"";
+				error = "**Error at line " + (plain1.length+i+1) + "**\n" +
+					"\"" + realityOutput.get(plain1.length+i) + "\"\n\n";
 
-				return additionalErrors + errors;
+				if( ! competition)
+					errors += error;
+				else
+					return additionalErrors + error;
 			}
 
 		for (int i = 0; i < plain2.length && plain1.length+encrypted.length+i < realityOutput.size(); i++)
 			if( ! plain2[i].equals(realityOutput.get(plain1.length+encrypted.length+i))) {
-				errors = "**Error at line " + (plain1.length+encrypted.length+i+1) + "**\n" +
+				error = "**Error at line " + (plain1.length+encrypted.length+i+1) + "**\n" +
 					"Expected: \"" + plain2[i] + "\"\n" +
-					"Reality:  \"" + realityOutput.get(plain1.length+encrypted.length+i) + "\"";
+					"Reality:  \"" + realityOutput.get(plain1.length+encrypted.length+i) + "\"\n\n";
 
-				return additionalErrors + errors;
+				if( ! competition)
+					errors += error;
+				else
+					return additionalErrors + error;
 			}
 
-		if(additionalErrors.length() > 0)
-			return additionalErrors;
+		if(additionalErrors.length() > 0 || errors.length() > 0)
+			return additionalErrors + errors;
 		else
 			return "OK!";
 	}

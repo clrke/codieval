@@ -68,7 +68,10 @@ public class ExpectedOutput {
 				return additionalErrors + errors;
 			}
 
-		return additionalErrors + "OK!";
+		if(additionalErrors.length() > 0)
+			return additionalErrors;
+		else
+			return "OK!";
 	}
 
 	@Override

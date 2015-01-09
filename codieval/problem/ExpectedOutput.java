@@ -96,11 +96,11 @@ public class ExpectedOutput {
 			else
 				totalDiff += 0;
 
-		for (int i = 0; i < encrypted.length; i++)
-			if(plain1.length+i < realityOutput.size())
-				totalDiff += getSimilarity(encrypted[i], Hasher.hash(realityOutput.get(plain1.length+i)));
+		for (int i = 0; i < encrypted.length && plain1.length+i < realityOutput.size(); i++)
+			if(encrypted[i].equals(Hasher.hash(realityOutput.get(plain1.length+i))))
+				totalDiff += 100;
 			else
-				totalDiff += 0;
+				totalDiff += 50;
 
 		for (int i = 0; i < plain2.length; i++)
 			if(plain1.length+encrypted.length+i < realityOutput.size())

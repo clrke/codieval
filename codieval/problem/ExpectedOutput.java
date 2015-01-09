@@ -42,7 +42,7 @@ public class ExpectedOutput {
 				"Expected: " + this.size + "\n" +
 				"Reality:  " + realityOutput.size() + "\n\n";
 
-		for (int i = 0; i < plain1.length; i++)
+		for (int i = 0; i < plain1.length && i < realityOutput.size(); i++)
 			if( ! plain1[i].equals(realityOutput.get(i))) {
 				errors = "**Error at line " + (i+1) + "**\n" +
 					"Expected: \"" + plain1[i] + "\"\n" +
@@ -51,7 +51,7 @@ public class ExpectedOutput {
 				return additionalErrors + errors;
 			}
 
-		for (int i = 0; i < encrypted.length; i++)
+		for (int i = 0; i < encrypted.length && plain1.length+i < realityOutput.size(); i++)
 			if( ! encrypted[i].equals(Hasher.hash(realityOutput.get(plain1.length+i)))) {
 				errors = "**Error at line " + (plain1.length+i+1) + "**\n" +
 					"\"" + realityOutput.get(plain1.length+i) + "\"";
@@ -59,7 +59,7 @@ public class ExpectedOutput {
 				return additionalErrors + errors;
 			}
 
-		for (int i = 0; i < plain2.length; i++)
+		for (int i = 0; i < plain2.length && plain1.length+encrypted.length+i < realityOutput.size(); i++)
 			if( ! plain2[i].equals(realityOutput.get(plain1.length+encrypted.length+i))) {
 				errors = "**Error at line " + (plain1.length+encrypted.length+i+1) + "**\n" +
 					"Expected: \"" + plain2[i] + "\"\n" +

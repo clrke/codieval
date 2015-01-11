@@ -35,6 +35,12 @@ public class ProblemPanel extends JPanel {
 			}
 		});
 		add(btnInfo);
-		add(new Checkbox(problem.toString(), true));
+		final Checkbox chkProblem = new Checkbox(problem.toString(), problem.enabled);
+		chkProblem.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				problem.enabled = chkProblem.getState();
+			}
+		});
+		add(chkProblem);
 	}
 }

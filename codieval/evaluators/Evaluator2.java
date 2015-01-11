@@ -103,6 +103,20 @@ public Evaluator2(String eventName, final boolean competition) {
 
 	problems = new ArrayList();
 
+	ArrayList<String> problemsSet = new ArrayList<String>();
+
+	try {
+		BufferedReader br = new BufferedReader(new FileReader(new File("settings/problems-set.txt")));
+
+		for(String line = br.readLine(); line != null; line = br.readLine())
+			problemsSet.add(line);
+
+		br.close();
+	}
+	catch(IOException e) {
+		e.printStackTrace();
+	}
+
 	File problemsDirectory = new File("problems/");
 	for (String name : problemsDirectory.list()) {
 		File file = new File("problems/"+name);
@@ -116,7 +130,22 @@ public Evaluator2(String eventName, final boolean competition) {
 					fileContents.add(line);
 
 				br.close();
-				problems.add(new Problem(FileSystems.getDefault().getPath("problems/"+name, "input.txt"), fileContents));
+				Problem problem = new Problem(FileSystems.getDefault().getPath("problems/"+name, "input.txt"), fileContents);
+
+				if(problemsSet.size() > 0) {
+					for(String enabledProblem : problemsSet) {
+						if(enabledProblem.equals(problem.title)) {
+							problem.enabled = true;
+							break;
+						}
+					}
+				}
+				else {
+					problem.enabled = true;
+				}
+
+				if(problem.enabled)
+					problems.add(problem);
 			}
 			catch(IOException e) {
 				System.out.println(e.getMessage());

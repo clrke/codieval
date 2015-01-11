@@ -42,8 +42,20 @@ public class ProblemsManager extends JFrame {
 				int result = JOptionPane.showConfirmDialog(null, "Save changes before exiting?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
 				if(result == JOptionPane.YES_OPTION){
-					System.out.println("Saving...");
-					System.exit(0);
+					try {
+						PrintWriter pw = new PrintWriter(new FileWriter(new File("settings/problems-set.txt")));
+						for(Problem problem : problems) {
+							if(problem.enabled) {
+								pw.println(problem.title);
+							}
+						}
+						pw.close();
+						System.exit(0);
+					}
+					catch(IOException ie) {
+						System.out.println("Unable to save.");
+						ie.printStackTrace();
+					}
 				} else if(result == JOptionPane.NO_OPTION) {
 					System.exit(0);
 				} else {
@@ -58,26 +70,54 @@ public class ProblemsManager extends JFrame {
 
 		problems = new ArrayList<Problem>();
 
-		File problemsDirectory = new File("problems/");
-		for (String name : problemsDirectory.list()) {
-			File file = new File("problems/"+name);
-			if(file.isDirectory()) {
-				try {
-					ArrayList<String> fileContents = new ArrayList<String>();
+		ArrayList<String> problemsSet = new ArrayList<String>();
 
-					BufferedReader br = new BufferedReader(new FileReader(new File("problems/"+name+"/desc.germ")));
+	try {
+		BufferedReader br = new BufferedReader(new FileReader(new File("settings/problems-set.txt")));
 
-					for(String line = br.readLine(); line != null; line = br.readLine())
-						fileContents.add(line);
+		for(String line = br.readLine(); line != null; line = br.readLine())
+			problemsSet.add(line);
 
-					br.close();
-					problems.add(new Problem(FileSystems.getDefault().getPath("problems/"+name, "input.txt"), fileContents));
+		br.close();
+	}
+	catch(IOException e) {
+		e.printStackTrace();
+	}
+
+	File problemsDirectory = new File("problems/");
+	for (String name : problemsDirectory.list()) {
+		File file = new File("problems/"+name);
+		if(file.isDirectory()) {
+			try {
+				ArrayList<String> fileContents = new ArrayList<String>();
+
+				BufferedReader br = new BufferedReader(new FileReader(new File("problems/"+name+"/desc.germ")));
+
+				for(String line = br.readLine(); line != null; line = br.readLine())
+					fileContents.add(line);
+
+				br.close();
+				Problem problem = new Problem(FileSystems.getDefault().getPath("problems/"+name, "input.txt"), fileContents);
+
+				if(problemsSet.size() > 0) {
+					for(String enabledProblem : problemsSet) {
+						if(enabledProblem.equals(problem.title)) {
+							problem.enabled = true;
+							break;
+						}
+					}
 				}
-				catch(IOException e) {
-					System.out.println(e.getMessage());
+				else {
+					problem.enabled = true;
 				}
+
+				problems.add(problem);
+			}
+			catch(IOException e) {
+				System.out.println(e.getMessage());
 			}
 		}
+	}
 
 		lytProblems.setRows(problems.size());
 

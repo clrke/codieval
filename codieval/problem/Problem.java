@@ -14,6 +14,7 @@ public class Problem {
 	public boolean done;
 	public float correctness;
 	public float grade;
+	public boolean enabled = false;
 
 	public Problem(Path inputFilePath, ArrayList<String> fileContents) {
 		this.inputFilePath = inputFilePath;

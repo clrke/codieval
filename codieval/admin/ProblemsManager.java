@@ -31,7 +31,28 @@ public class ProblemsManager extends JFrame {
 	public ProblemsManager() {
 		super("Problems Manager");
 
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+
+		addWindowListener(new WindowListener() {
+			public void windowActivated(WindowEvent e) {}
+			public void windowDeactivated(WindowEvent e) {}
+			public void windowDeiconified(WindowEvent e) {}
+			public void windowIconified(WindowEvent e) {}
+			public void windowClosing(WindowEvent e){
+				int result = JOptionPane.showConfirmDialog(null, "Save changes before exiting?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+				if(result == JOptionPane.YES_OPTION){
+					System.out.println("Saving...");
+					System.exit(0);
+				} else if(result == JOptionPane.NO_OPTION) {
+					System.exit(0);
+				} else {
+	               //Do nothing
+				}
+		 	}
+			public void windowOpened(WindowEvent e) {System.out.println();}
+			public void windowClosed(WindowEvent e) {}
+		});
 
 		this.setLayout(new BorderLayout());
 

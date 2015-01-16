@@ -136,10 +136,18 @@ public class ProblemsManager extends JFrame {
 			}
 		});
 
+		JButton btnAddProblem = new JButton("New Problem");
+
+		btnAddProblem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				new NewProblemFrame();
+			}
+		});
+
 		pnlSearch.add(txtSearch);
 		pnlSearch.add(btnSearch);
 
-		pnlAddProblem.add(new JButton("New Problem"));
+		pnlAddProblem.add(btnAddProblem);
 
 		add(pnlSearch, BorderLayout.NORTH);
 		add(scrlProblems, BorderLayout.CENTER);

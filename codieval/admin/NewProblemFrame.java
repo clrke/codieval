@@ -16,7 +16,9 @@ public class NewProblemFrame extends JFrame {
 	JTextArea txtInput = new JTextArea(20, 20);
 	JTextArea txtOutput = new JTextArea(20, 20);
 
-	JButton btnImport = new JButton("Import source code");
+	JButton btnImportSampleInput = new JButton("Import sample input");
+	JButton btnImportInput = new JButton("Import input");
+	JButton btnImportSourceCode = new JButton("Import source code");
 	JButton btnGenerate = new JButton("Generate output");
 	JButton btnInfo = new JButton("View Information");
 
@@ -30,7 +32,7 @@ public class NewProblemFrame extends JFrame {
 		add(getTopPanel());
 		add(getBottomPanel());
 
-		setSize(600, 600);
+		setSize(800, 600);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		setVisible(true);
@@ -76,10 +78,12 @@ public class NewProblemFrame extends JFrame {
 		return panel;
 	}
 	private JPanel getOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(4, 1));
+		JPanel panel = new JPanel(new GridLayout(3, 2));
 
+		panel.add(btnImportSampleInput);
+		panel.add(btnImportInput);
 		panel.add(getSourceCodePanel());
-		panel.add(btnImport);
+		panel.add(btnImportSourceCode);
 		panel.add(btnGenerate);
 		panel.add(btnInfo);
 
@@ -110,7 +114,6 @@ public class NewProblemFrame extends JFrame {
 	private JPanel getSourceCodePanel() {
 		JPanel panel = new JPanel(new FlowLayout());
 
-		panel.add(new JLabel("Source code:"));
 		panel.add(lblSourceCode);
 
 		return panel;
@@ -121,6 +124,7 @@ public class NewProblemFrame extends JFrame {
 		JPanel labelPanel = new JPanel(new GridLayout(1, 1));
 		labelPanel.add(new JLabel("Sample Input:"));
 
+		txtSampleInput.setEditable(false);
 		JPanel textPanel = new JPanel(new GridLayout(1, 1));
 		textPanel.add(new JScrollPane(txtSampleInput));
 
@@ -150,6 +154,7 @@ public class NewProblemFrame extends JFrame {
 		JPanel labelPanel = new JPanel(new GridLayout(1, 1));
 		labelPanel.add(new JLabel("Input:"));
 
+		txtInput.setEditable(false);
 		JPanel textPanel = new JPanel(new GridLayout(1, 1));
 		textPanel.add(new JScrollPane(txtInput));
 

@@ -20,7 +20,7 @@ public class UniversalCompiler {
 	}
 
 	public static String getFileExtension(String filename) {
-		String[] filenameSplit = filename.split(".");
+		String[] filenameSplit = filename.split("\\.");
 		String fileExtension = filenameSplit[filenameSplit.length-1];
 
 		return fileExtension;

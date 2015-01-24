@@ -8,6 +8,8 @@ import javax.swing.event.*;
 
 import codieval.problem.*;
 
+import java.io.*;
+
 public class NewProblemFrame extends JFrame {
 	JTextField txtTitle = new JTextField(20);
 	JTextArea txtDescription = new JTextArea(20, 20);
@@ -15,6 +17,8 @@ public class NewProblemFrame extends JFrame {
 	JTextArea txtSampleOutput = new JTextArea(20, 20);
 	JTextArea txtInput = new JTextArea(20, 20);
 	JTextArea txtOutput = new JTextArea(20, 20);
+
+	JFileChooser chooser = new JFileChooser();
 
 	JButton btnImportSampleInput = new JButton("Import sample input");
 	JButton btnImportInput = new JButton("Import input");
@@ -79,6 +83,66 @@ public class NewProblemFrame extends JFrame {
 	}
 	private JPanel getOptionsPanel() {
 		JPanel panel = new JPanel(new GridLayout(3, 2));
+
+		btnImportSampleInput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+					public boolean accept(File f) {
+						return true;
+					}
+
+					public String getDescription() {
+						return "Textfile";
+					}
+				});
+
+				int option = chooser.showOpenDialog(NewProblemFrame.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					try {
+						try(BufferedReader br = new BufferedReader(
+								new FileReader(chooser.getSelectedFile()))) {
+							String sampleInput = "";
+							for(String line = br.readLine(); line != null; line = br.readLine()) {
+								sampleInput += line + "\n";
+							}
+							txtSampleInput.setText(sampleInput);
+						}
+					} catch(IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+
+		btnImportInput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+					public boolean accept(File f) {
+						return true;
+					}
+
+					public String getDescription() {
+						return "Textfile";
+					}
+				});
+
+				int option = chooser.showOpenDialog(NewProblemFrame.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					try {
+						try(BufferedReader br = new BufferedReader(
+								new FileReader(chooser.getSelectedFile()))) {
+							String input = "";
+							for(String line = br.readLine(); line != null; line = br.readLine()) {
+								input += line + "\n";
+							}
+							txtInput.setText(input);
+						}
+					} catch(IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 
 		panel.add(btnImportSampleInput);
 		panel.add(btnImportInput);

@@ -106,6 +106,7 @@ public class NewProblemFrame extends JFrame {
 								sampleInput += line + "\n";
 							}
 							txtSampleInput.setText(sampleInput);
+							refreshGenerateOutputEnability();
 						}
 					} catch(IOException e) {
 						e.printStackTrace();
@@ -136,6 +137,7 @@ public class NewProblemFrame extends JFrame {
 								input += line + "\n";
 							}
 							txtInput.setText(input);
+							refreshGenerateOutputEnability();
 						}
 					} catch(IOException e) {
 						e.printStackTrace();
@@ -143,6 +145,8 @@ public class NewProblemFrame extends JFrame {
 				}
 			}
 		});
+
+		btnGenerate.setEnabled(false);
 
 		panel.add(btnImportSampleInput);
 		panel.add(btnImportInput);
@@ -241,5 +245,10 @@ public class NewProblemFrame extends JFrame {
 		panel.add(textPanel, BorderLayout.CENTER);
 
 		return panel;
+	}
+	private void refreshGenerateOutputEnability() {
+		if(txtInput.getText().length() > 0 && txtSampleInput.getText().length() > 0) {
+			btnGenerate.setEnabled(true);
+		}
 	}
 }

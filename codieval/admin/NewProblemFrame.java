@@ -164,6 +164,7 @@ public class NewProblemFrame extends JFrame {
 				if (option == JFileChooser.APPROVE_OPTION) {
 					sourceCode = chooser.getSelectedFile();
 					lblSourceCode.setText(sourceCode.getName());
+					refreshGenerateOutputEnability();
 				}
 			}
 		});
@@ -277,7 +278,9 @@ public class NewProblemFrame extends JFrame {
 		return panel;
 	}
 	private void refreshGenerateOutputEnability() {
-		if(txtInput.getText().length() > 0 && txtSampleInput.getText().length() > 0) {
+		if(txtInput.getText().length() > 0 &&
+				txtSampleInput.getText().length() > 0 &&
+				sourceCode != null) {
 			btnGenerate.setEnabled(true);
 		}
 	}

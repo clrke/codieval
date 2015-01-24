@@ -8,6 +8,8 @@ import javax.swing.event.*;
 
 import codieval.problem.*;
 
+import codieval.ucompiler.UniversalCompiler;
+
 import java.io.*;
 
 public class NewProblemFrame extends JFrame {
@@ -173,7 +175,32 @@ public class NewProblemFrame extends JFrame {
 
 		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				btnInfo.setEnabled(true);
+				try {
+					String result;
+
+					try(PrintWriter pw = new PrintWriter(
+							new FileWriter(new File(sourceCode.getParent(), "input.txt")))) {
+						pw.write(txtSampleInput.getText());
+					}
+					result = UniversalCompiler.compileAndRun(
+						sourceCode.getParent(), sourceCode.getName());
+
+					txtSampleOutput.setText(result);
+
+					try(PrintWriter pw = new PrintWriter(
+							new FileWriter(new File(sourceCode.getParent(), "input.txt")))) {
+						pw.write(txtInput.getText());
+					}
+					result = UniversalCompiler.compileAndRun(
+						sourceCode.getParent(), sourceCode.getName());
+
+					txtOutput.setText(result);
+
+					btnInfo.setEnabled(true);
+				} catch(Exception e) {
+					JOptionPane.showMessageDialog(NewProblemFrame.this, e);
+					e.printStackTrace();
+				}
 			}
 		});
 

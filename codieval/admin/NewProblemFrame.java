@@ -148,6 +148,14 @@ public class NewProblemFrame extends JFrame {
 
 		btnGenerate.setEnabled(false);
 
+		btnGenerate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				btnInfo.setEnabled(true);
+			}
+		});
+
+		btnInfo.setEnabled(false);
+
 		panel.add(btnImportSampleInput);
 		panel.add(btnImportInput);
 		panel.add(getSourceCodePanel());

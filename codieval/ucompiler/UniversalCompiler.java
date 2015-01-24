@@ -19,6 +19,32 @@ public class UniversalCompiler {
 	    }
 	}
 
+	public static String getFileExtension(String filename) {
+		String[] filenameSplit = filename.split(".");
+		String fileExtension = filenameSplit[filenameSplit.length-1];
+
+		return fileExtension;
+	}
+
+	public static String getProgrammingLanguage(String fileExtension) {
+		switch (fileExtension.toLowerCase()) {
+			case "c": return "C";
+			case "cs": return "C#";
+			case "java": return "Java";
+			case "py": return "Python";
+			default: return null;
+		}
+	}
+
+	public static String compileAndRun(String dir, String filename) throws IOException, CompilationErrorException {
+		String programmingLanguage = getProgrammingLanguage(getFileExtension(filename));
+
+		if(programmingLanguage != null)
+			return compileAndRun(dir, programmingLanguage, filename);
+		else
+			throw new CompilationErrorException("Unknown compiler for " + filename + ".");
+	}
+
 	public static String compileAndRun(String dir, String programmingLanguage, String filename) throws IOException, CompilationErrorException {
 		boolean error = false;
 		String[] commands = getCommandCompile(programmingLanguage, filename);

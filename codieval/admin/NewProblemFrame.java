@@ -20,6 +20,8 @@ public class NewProblemFrame extends JFrame {
 
 	JFileChooser chooser = new JFileChooser();
 
+	File sourceCode;
+
 	JButton btnImportSampleInput = new JButton("Import sample input");
 	JButton btnImportInput = new JButton("Import input");
 	JButton btnImportSourceCode = new JButton("Import source code");
@@ -142,6 +144,26 @@ public class NewProblemFrame extends JFrame {
 					} catch(IOException e) {
 						e.printStackTrace();
 					}
+				}
+			}
+		});
+
+		btnImportSourceCode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+					public boolean accept(File f) {
+						return true;
+					}
+
+					public String getDescription() {
+						return "Source Code";
+					}
+				});
+
+				int option = chooser.showOpenDialog(NewProblemFrame.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					sourceCode = chooser.getSelectedFile();
+					lblSourceCode.setText(sourceCode.getName());
 				}
 			}
 		});

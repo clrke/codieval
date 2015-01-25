@@ -84,7 +84,6 @@ public class ProblemsManager extends JFrame {
 		e.printStackTrace();
 	}
 
-	File problemsDirectory = new File("problems/");
 	for (int i = 1; ; i++) {
 		String name = String.format("problem%04d", i);
 		File file = new File("problems/"+name);

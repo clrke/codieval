@@ -206,6 +206,25 @@ public class NewProblemFrame extends JFrame {
 
 		btnInfo.setEnabled(false);
 
+		btnInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				Problem problem = new Problem(
+					txtTitle.getText(),
+					txtDescription.getText(),
+					txtSampleInput.getText(),
+					txtSampleOutput.getText()
+				);
+				problem.input = txtInput.getText();
+				problem.output = txtOutput.getText();
+
+				try {
+					new Requirements(problem);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
 		panel.add(btnImportSampleInput);
 		panel.add(btnImportInput);
 		panel.add(getSourceCodePanel());

@@ -48,8 +48,15 @@ public class Requirements extends JFrame {
 
 		String input, output;
 
-		input = "Input:\n" +  new String(Files.readAllBytes(problem.inputFilePath), StandardCharsets.UTF_8);
-		output = "Output:\n" + problem.expectedOutput.toString();
+		input = "Input:\n" + (
+			problem.inputFilePath != null ?
+				new String(Files.readAllBytes(problem.inputFilePath), StandardCharsets.UTF_8) :
+				problem.input);
+
+		output = "Output:\n" + (
+			problem.expectedOutput != null?
+				problem.expectedOutput.toString() :
+				problem.output);
 
 		this.setLayout(new GridLayout(2, 1));
 		JPanel pnlDesc = new JPanel(new GridLayout(1, 1));

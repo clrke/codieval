@@ -9,6 +9,8 @@ public class Problem {
 	public String description;
 	public String sampleInput;
 	public String sampleOutput;
+	public String input;
+	public String output;
 	public Path inputFilePath;
 	public ExpectedOutput expectedOutput;
 	public boolean done;
@@ -49,6 +51,8 @@ public class Problem {
 		this.description = description;
 		this.sampleInput = sampleInput;
 		this.sampleOutput = sampleOutput;
+		this.inputFilePath = null;
+		this.expectedOutput = null;
 		this.done = false;
 		this.correctness = -1;
 		this.grade = -1;

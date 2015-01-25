@@ -328,6 +328,10 @@ public class NewProblemFrame extends JFrame {
 				txtSampleInput.getText().length() > 0 &&
 				sourceCode != null) {
 			btnGenerate.setEnabled(true);
+			btnInfo.setEnabled(false);
+
+			txtSampleOutput.setText("");
+			txtOutput.setText("");
 		}
 	}
 }

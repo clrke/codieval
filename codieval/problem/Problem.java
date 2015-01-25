@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.io.*;
 import java.nio.file.*;
 
+import codieval.complexity.BigO;
+
 public class Problem {
 	public String title;
 	public String description;
@@ -16,14 +18,24 @@ public class Problem {
 	public boolean done;
 	public float correctness;
 	public float grade;
+	public BigO bigO;
 	public boolean enabled = false;
 
 	public Problem(Path inputFilePath, ArrayList<String> fileContents) {
 		this.inputFilePath = inputFilePath;
+		this.bigO = null;
 
 		int i = 0;
-		for (; ! fileContents.get(i).equals("====="); i++)
-			this.title = this.title != null? this.title + "\n" + fileContents.get(i) : fileContents.get(i);
+		for (; ! fileContents.get(i).equals("====="); i++) {
+			String[] infoSplit = fileContents.get(i).split("#####");
+
+			this.title = this.title != null ?
+				this.title + "\n" + infoSplit[0] : infoSplit[0];
+
+			if(infoSplit.length > 1) {
+				this.bigO = new BigO(infoSplit[1]);
+			}
+		}
 
 		for (i++; ! fileContents.get(i).equals("====="); i++)
 			this.description = this.description != null? this.description + "\n" + fileContents.get(i) : fileContents.get(i);

@@ -246,6 +246,25 @@ public class NewProblemFrame extends JFrame {
 
 		btnSave.setEnabled(false);
 
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				int i;
+				String name;
+
+				for (i = 1; ; i++) {
+					name = String.format("problem%04d", i);
+					File file = new File("problems/"+name);
+
+					if( ! file.exists())
+						break;
+				}
+
+				System.out.println("Todo: Make "+name);
+				NewProblemFrame.this.dispatchEvent(
+					new WindowEvent(NewProblemFrame.this, WindowEvent.WINDOW_CLOSING));
+			}
+		});
+
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				NewProblemFrame.this.dispatchEvent(

@@ -2,12 +2,36 @@ package codieval.complexity;
 
 import java.util.LinkedList;
 
+import java.util.regex.*;
+
 public class BigO {
 
 	private LinkedList<Integer> exponents;
 
 	public BigO() {
 		this.exponents = new LinkedList<Integer>();
+	}
+
+	public BigO(String bigO) {
+		this.exponents = new LinkedList<Integer>();
+
+		try {
+			Pattern pattern = Pattern.compile("O\\((.*)\\)");
+			Matcher matcher = pattern.matcher(bigO);
+
+			matcher.find();
+
+			for (String parameter : matcher.group(1).split("\\+")) {
+				String[] parameterSplit = parameter.split("\\^");
+				if(parameterSplit.length > 1) {
+					this.exponents.add(Integer.parseInt(parameterSplit[1]));
+				} else {
+					this.exponents.add(1);
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void add(int exponent) {

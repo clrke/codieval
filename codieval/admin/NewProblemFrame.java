@@ -250,6 +250,19 @@ public class NewProblemFrame extends JFrame {
 
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				String errorMessage = "";
+
+				if(txtTitle.getText().length() == 0) {
+					errorMessage += "Problem title must not be empty.\n";
+				}
+				if(txtDescription.getText().length() == 0) {
+					errorMessage += "Problem description must not be empty.\n";
+				}
+				if(errorMessage.length() > 0) {
+					JOptionPane.showMessageDialog(NewProblemFrame.this, errorMessage);
+					return;
+				}
+
 				int i;
 				String name;
 				File file;

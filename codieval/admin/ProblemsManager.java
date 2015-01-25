@@ -85,8 +85,13 @@ public class ProblemsManager extends JFrame {
 	}
 
 	File problemsDirectory = new File("problems/");
-	for (String name : problemsDirectory.list()) {
+	for (int i = 1; ; i++) {
+		String name = String.format("problem%04d", i);
 		File file = new File("problems/"+name);
+
+		if( ! file.exists())
+			break;
+
 		if(file.isDirectory()) {
 			try {
 				ArrayList<String> fileContents = new ArrayList<String>();

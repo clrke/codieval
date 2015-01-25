@@ -12,6 +12,8 @@ import codieval.ucompiler.UniversalCompiler;
 
 import codieval.complexity.*;
 
+import codieval.hasher.Hasher;
+
 import java.io.*;
 
 import java.nio.charset.*;
@@ -250,16 +252,58 @@ public class NewProblemFrame extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				int i;
 				String name;
+				File file;
 
 				for (i = 1; ; i++) {
 					name = String.format("problem%04d", i);
-					File file = new File("problems/"+name);
+					file = new File("problems/"+name);
 
 					if( ! file.exists())
 						break;
 				}
 
-				System.out.println("Todo: Make "+name);
+				try {
+					file.mkdir();
+					File inputFile = new File("problems/"+name+"/input.txt");
+					File descFile = new File("problems/"+name+"/desc.germ");
+
+					try(PrintWriter pw = new PrintWriter(
+							new FileWriter(inputFile))) {
+						pw.print(txtInput.getText());
+					}
+					try(PrintWriter pw = new PrintWriter(
+							new FileWriter(descFile))) {
+						pw.println(txtTitle.getText());
+						pw.println("=====");
+						pw.println(txtDescription.getText());
+						pw.println("=====");
+						pw.print(txtSampleInput.getText());
+						pw.println("=====");
+						pw.print(txtSampleOutput.getText());
+						pw.println("=====");
+
+						String[] expectedOutput = txtOutput.getText().split("\r\n|\r|\n");
+
+						int lineCount = expectedOutput.length;
+
+						int plain1Count = lineCount/4;
+						int plain2Count = lineCount/4;
+						int encryptedCount = lineCount - plain1Count - plain2Count;
+
+						pw.println(String.format("%d %d %d", plain1Count, encryptedCount, plain2Count));
+						for(int j = 0; j < plain1Count; j++) {
+							pw.println(expectedOutput[j]);
+						}
+						for(int j = plain1Count; j < plain1Count + encryptedCount; j++) {
+							pw.println(Hasher.hash(expectedOutput[j]));
+						}
+						for(int j = plain1Count+encryptedCount; j < lineCount; j++) {
+							pw.println(expectedOutput[j]);
+						}
+					}
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
 				NewProblemFrame.this.dispatchEvent(
 					new WindowEvent(NewProblemFrame.this, WindowEvent.WINDOW_CLOSING));
 			}

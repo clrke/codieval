@@ -41,6 +41,8 @@ public class NewProblemFrame extends JFrame {
 
 	JLabel lblSourceCode = new JLabel();
 
+	private BigO bigO;
+
 	public NewProblemFrame() {
 		super("New Problem");
 
@@ -175,7 +177,7 @@ public class NewProblemFrame extends JFrame {
 				if (option == JFileChooser.APPROVE_OPTION) {
 					sourceCode = chooser.getSelectedFile();
 
-					BigO bigO = new BigO();
+					bigO = new BigO();
 
 					try {
 						bigO = Complexity.getBigO(new String(
@@ -286,7 +288,7 @@ public class NewProblemFrame extends JFrame {
 					}
 					try(PrintWriter pw = new PrintWriter(
 							new FileWriter(descFile))) {
-						pw.println(txtTitle.getText());
+						pw.println(txtTitle.getText() + "#####" + bigO);
 						pw.println("=====");
 						pw.println(txtDescription.getText());
 						pw.println("=====");

@@ -62,8 +62,6 @@ private File selectedFile;
 JLabel lblLanguage = new JLabel("Choose your language: ");
 JLabel lblTime = new JLabel("PROBLEMS [ Timer: " + getTimeForHumans(0) + " ]");
 
-JComboBox cmbLanguage = new JComboBox(new String[] {"C", "Java", "C#", "Python"});
-
 JLabel lblCompiler = new JLabel(UniversalCompiler.getCompiler("C"));
 
 int seconds = 0;
@@ -172,12 +170,8 @@ public Evaluator2(String eventName, final boolean competition) {
 
 	pnlTimer.add(lblTime);
 
-	pnlLanguage.add(lblLanguage);
-	pnlLanguage.add(cmbLanguage);
-
 	pnlWest.add(pnlTimer, BorderLayout.NORTH);
 	pnlWest.add(pnlProblems, BorderLayout.CENTER);
-	pnlWest.add(pnlLanguage, BorderLayout.SOUTH);
 
 	btnSubmit.setEnabled(false);
 
@@ -272,7 +266,7 @@ public Evaluator2(String eventName, final boolean competition) {
 				}
 
 				public String getDescription() {
-					return cmbLanguage.getSelectedItem() + " source codes";
+					return "Source codes";
 				}
 			});
 
@@ -300,18 +294,6 @@ public Evaluator2(String eventName, final boolean competition) {
 		}
 	});
 
-	cmbLanguage.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent ae) {
-			String compilerVersion = UniversalCompiler.getCompiler(cmbLanguage.getSelectedItem().toString());
-			lblCompiler.setText(compilerVersion);
-
-			if(compilerVersion.startsWith("Error"))
-				btnSubmit.setEnabled(false);
-			else if(selectedFile != null)
-				btnSubmit.setEnabled(true);
-		}
-	});
-
 	listProblems.addListSelectionListener(new ListSelectionListener() {
 		public void valueChanged(ListSelectionEvent e) {
 			txtDesc.setText(((Problem)listProblems.getSelectedValue()).getDataString());
@@ -326,10 +308,9 @@ public Evaluator2(String eventName, final boolean competition) {
 				ArrayList<String> realityLines = new ArrayList<String>();
 
 				String dir = selectedFile.getParent();
-				String programmingLanguage = cmbLanguage.getSelectedItem().toString();
 				String filename = selectedFile.getName();
 
-				for (String line : UniversalCompiler.compileAndRun(dir, programmingLanguage, filename).split("\n")) {
+				for (String line : UniversalCompiler.compileAndRun(dir, filename).split("\n")) {
 					realityLines.add(line);
 				}
 

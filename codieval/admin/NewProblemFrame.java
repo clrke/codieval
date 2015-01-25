@@ -10,7 +10,12 @@ import codieval.problem.*;
 
 import codieval.ucompiler.UniversalCompiler;
 
+import codieval.complexity.*;
+
 import java.io.*;
+
+import java.nio.charset.*;
+import java.nio.file.*;
 
 public class NewProblemFrame extends JFrame {
 	JTextField txtTitle = new JTextField(20);
@@ -167,7 +172,18 @@ public class NewProblemFrame extends JFrame {
 				int option = chooser.showOpenDialog(NewProblemFrame.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					sourceCode = chooser.getSelectedFile();
-					lblSourceCode.setText(sourceCode.getName());
+
+					BigO bigO = new BigO();
+
+					try {
+						bigO = Complexity.getBigO(new String(
+							Files.readAllBytes(sourceCode.toPath()), StandardCharsets.UTF_8));
+					} catch(IOException e) {
+						e.printStackTrace();
+					}
+
+					lblSourceCode.setText(sourceCode.getName() + " " + bigO);
+
 					refreshGenerateOutputEnability();
 				}
 			}

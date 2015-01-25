@@ -17,7 +17,10 @@ public class Problem {
 	public ExpectedOutput expectedOutput;
 	public boolean done;
 	public float correctness;
+	public float correctnessGrade;
+	public float timeComplexityGrade;
 	public float grade;
+	public float equivalentGrade;
 	public BigO bigO;
 	public boolean enabled = false;
 
@@ -55,6 +58,8 @@ public class Problem {
 
 		this.done = false;
 		this.correctness = -1;
+		this.correctnessGrade = -1;
+		this.timeComplexityGrade = -1;
 		this.grade = -1;
 	}
 
@@ -67,12 +72,14 @@ public class Problem {
 		this.expectedOutput = null;
 		this.done = false;
 		this.correctness = -1;
+		this.correctnessGrade = -1;
+		this.timeComplexityGrade = -1;
 		this.grade = -1;
 	}
 
 	@Override
 	public String toString() {
-		return " " + (grade != -1? String.format("%.2f ", grade) : "") + (this.done? "* " : "") + this.title;
+		return " " + (grade != -1? String.format("%.2f ", equivalentGrade) : "") + (this.done? "* " : "") + this.title;
 	}
 
 	public String getDataString() {
@@ -84,7 +91,27 @@ public class Problem {
 
 	public void setCorrectness(float correctness) {
 		this.correctness = correctness;
-		this.grade = getEquivalentGrade(correctness);
+		this.correctnessGrade = getEquivalentGrade(correctness);
+	}
+
+	public void setTimeComplexityGrade(BigO bigO2) {
+		if(bigO == null) {
+			this.timeComplexityGrade = 100;
+			return;
+		}
+		int value1 = bigO.getValue(2);
+		int value2 = bigO2.getValue(2);
+
+		if(value1 > value2) {
+			this.timeComplexityGrade = 100;
+		} else {
+			this.timeComplexityGrade = (float)value1*100/value2;
+		}
+	}
+
+	public void computeGrade() {
+		this.grade = (this.correctness*85 + this.timeComplexityGrade*15)/100;
+		this.equivalentGrade = getEquivalentGrade(grade);
 	}
 
 	public float getEquivalentGrade(float correctness) {

@@ -1,4 +1,4 @@
-[EASY] Hello World
+[EASY] Hello World#####O(n^0)
 =====
 Loop through every name in input.txt and output each in output.txt as Hello <name>!
 =====

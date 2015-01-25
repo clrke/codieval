@@ -9,12 +9,14 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import java.nio.charset.*;
 import java.nio.file.*;
 
 import codieval.exceptions.CompilationErrorException;
 import codieval.problem.*;
 import codieval.ucompiler.UniversalCompiler;
 import codieval.hasher.Hasher;
+import codieval.complexity.*;
 
 public class Evaluator2 extends JFrame {
 
@@ -341,9 +343,27 @@ public Evaluator2(String eventName, final boolean competition) {
 					listProblems.repaint();
 				}
 				if( ! competition) {
-					currentProblem.setCorrectness(currentProblem.expectedOutput.getCorrectness(realityLines)/2 + 50);
+					java.util.List<String> sourceCodeLines = Files.readAllLines(
+						selectedFile.toPath(), StandardCharsets.UTF_8);
 
-					txtEvaluation.setText(String.format(result+" %.2f%% = %.2f", currentProblem.correctness, currentProblem.grade));
+					String sourceCode = "";
+					for(String line : sourceCodeLines)
+						sourceCode += line + "\n";
+
+					BigO bigO = Complexity.getBigO(sourceCode);
+
+					currentProblem.setCorrectness(currentProblem.expectedOutput.getCorrectness(realityLines)/2 + 50);
+					currentProblem.setTimeComplexityGrade(bigO);
+					currentProblem.computeGrade();
+
+					txtEvaluation.setText(String.format(result+
+						"\n String Difference: %.2f%% = %.2f"+
+						"\n Time Complexity:   %s = %.2f%%" +
+						"\n\n Overall Grade:   %.2f x 0.85 + %.2f x 0.15 = %.2f%% = %.2f",
+						currentProblem.correctness, currentProblem.correctnessGrade,
+						bigO, currentProblem.timeComplexityGrade,
+						currentProblem.correctness, currentProblem.timeComplexityGrade,
+						currentProblem.grade, currentProblem.equivalentGrade));
 
 					listProblems.repaint();
 				}

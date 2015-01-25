@@ -1,4 +1,4 @@
-[MEDIUM] Team Queue
+[MEDIUM] Team Queue#####O(n^9)
 =====
 Queues and Priority Queues are data structures which are known to most computer scientists. The Team Queue, however, is not so well known, though it occurs often in everyday life. At lunch time the queue in front of the Mensa is a team queue, for example.
 

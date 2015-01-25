@@ -29,6 +29,8 @@ public class NewProblemFrame extends JFrame {
 	JButton btnImportSourceCode = new JButton("Import source code");
 	JButton btnGenerate = new JButton("Generate output");
 	JButton btnInfo = new JButton("View Information");
+	JButton btnSave = new JButton("Save");
+	JButton btnCancel = new JButton("Cancel");
 
 	JLabel lblSourceCode = new JLabel();
 
@@ -86,7 +88,7 @@ public class NewProblemFrame extends JFrame {
 		return panel;
 	}
 	private JPanel getOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(3, 2));
+		JPanel panel = new JPanel(new GridLayout(4, 2));
 
 		btnImportSampleInput.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -197,6 +199,7 @@ public class NewProblemFrame extends JFrame {
 					txtOutput.setText(result);
 
 					btnInfo.setEnabled(true);
+					btnSave.setEnabled(true);
 				} catch(Exception e) {
 					JOptionPane.showMessageDialog(NewProblemFrame.this, e);
 					e.printStackTrace();
@@ -225,12 +228,23 @@ public class NewProblemFrame extends JFrame {
 			}
 		});
 
+		btnSave.setEnabled(false);
+
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				NewProblemFrame.this.dispatchEvent(
+					new WindowEvent(NewProblemFrame.this, WindowEvent.WINDOW_CLOSING));
+			}
+		});
+
 		panel.add(btnImportSampleInput);
 		panel.add(btnImportInput);
 		panel.add(getSourceCodePanel());
 		panel.add(btnImportSourceCode);
 		panel.add(btnGenerate);
 		panel.add(btnInfo);
+		panel.add(btnSave);
+		panel.add(btnCancel);
 
 		return panel;
 	}
@@ -329,6 +343,7 @@ public class NewProblemFrame extends JFrame {
 				sourceCode != null) {
 			btnGenerate.setEnabled(true);
 			btnInfo.setEnabled(false);
+			btnSave.setEnabled(false);
 
 			txtSampleOutput.setText("");
 			txtOutput.setText("");

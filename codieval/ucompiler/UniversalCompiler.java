@@ -28,7 +28,8 @@ public class UniversalCompiler {
 
 	public static String getProgrammingLanguage(String fileExtension) {
 		switch (fileExtension.toLowerCase()) {
-			case "c": return "C";
+			case "c":
+			case "cpp": return "C";
 			case "cs": return "C#";
 			case "java": return "Java";
 			case "py": return "Python";

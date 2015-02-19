@@ -90,6 +90,28 @@ On the __codieval root folder__, compile and run codieval/admin/ProblemsManager.
 	$ javac codieval/admin/ProblemsManager.java
 	$ java codieval.admin.ProblemsManager
 
+### Admin Interface
+
+After opening codieval.admin.ProblemsManager, you have control over the administration side of the program.
+
+#### Choosing of Problems
+
+You can check and uncheck problems depending on what you want to include in the Code Evaluator for current session. Unchecked problems will not be shown. When asked if you want to save changes upon exiting the Problems Manager, make sure to confirm with "Yes" to have your checked and unchecked problems be commited.
+
+#### Searching of Problems
+
+You can search for any problem by typing your query at the search bar and pressing Enter. Searching for "a" will result to all problems with a letter "a" on the title.
+
+#### Viewing of Problem Information
+
+You can view the problems' information by clicking the Info button before the title of each problem.
+
+#### Adding of New Problems
+
+Upon clicking the New Problem button, a new dialog box will be shown for the input of a new problem. Set its Title and Description, then import its sample input and actual input. Sample inputs are usually smaller than actual inputs. Then, import your own sample source code. The source code's file name should appear at the space to the left of the "Import source code" button, along with its time complexity. After confirming the label's contents, try to Generate the output, and if successful, the "Save" button will become enabled. Clicking the Save button will save your new problem, given that you already have filled up the Title and Description.
+
+Once you have saved your problem, you might need to restart the Problems Manager in order for the new problem to show up in the problems list.
+
 ### Deployment
 
 After making a jar file, delete the codieval/ folder containing all the source codes, to avoid the users from tinkering with the code and recompiling it, possibly changing the mechanics of the system.

@@ -27,24 +27,8 @@ public class Complexity {
 
     public static int[] depthOfForLoop(Lexer lexer, int i) {
         int depth = 1;
-        int parentheses = 0;
 
-        i += 2;
-        parentheses++;
-
-        for(; i < lexer.size(); i++) {
-            String token = lexer.get(i).toString();
-            System.out.println("for loop! " + token);
-            if(token.equals("(")) {
-                parentheses++;
-            } else if(token.equals(")")) {
-                parentheses--;
-            }
-
-            if(parentheses == 0) {
-                break;
-            }
-        }
+        i = parseParentheses(lexer, i);
 
         i++;
         int curlyBraces = 0;
@@ -96,5 +80,28 @@ public class Complexity {
             }
         }
         return new int[] {depth, i};
+    }
+
+    public static int parseParentheses(Lexer lexer, int i) {
+        int parentheses = 0;
+
+        i += 2;
+        parentheses++;
+
+        for(; i < lexer.size(); i++) {
+            String token = lexer.get(i).toString();
+            System.out.println("parenthesis " + token);
+            if(token.equals("(")) {
+                parentheses++;
+            } else if(token.equals(")")) {
+                parentheses--;
+            }
+
+            if(parentheses == 0) {
+                break;
+            }
+        }
+
+        return i;
     }
 }

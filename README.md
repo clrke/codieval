@@ -94,7 +94,7 @@ On the __codieval root folder__, compile and run codieval/admin/ProblemsManager.
 
 ### Admin Interface
 
-After opening codieval.admin.ProblemsManager, you have control over the administration side of the program.
+After opening codieval.admin.ProblemsManager, you have control over the administration side of the system.
 
 #### Choosing of Problems
 

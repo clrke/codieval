@@ -92,6 +92,30 @@ On the __codieval root folder__, compile and run codieval/admin/ProblemsManager.
 
 ## User Manual
 
+### Code Evaluator
+
+You can choose whatever problem you want to do first. Once you do, you have various options.
+
+#### More Information
+
+Here you will see more information of the problem, including its required input and output.
+
+#### Export sample input file / Export input file
+
+Each problem has two types of input files: sample and actual. Sample input files are usually smaller than actual input files, as they are only used for experimentation by the users. You can view the contents of both input files by clicking the More Information button.
+
+By clicking the Export buttons, the user will have the option to save the input files wherever they want. It is recommended that the user saves the input files in the same folder as their program for easier file handling.
+
+#### Import source code
+
+The user may import the main module of their program any time and test it using the Submit button.
+
+#### Submit
+
+Any errors for the source code will be shown in the text area below. If there are none, the system will continue to evaluate the code, with its output and its time complexity. Time complexity is calculated based on the depth of the for loops in the user's program. After evaluation, a grade based of the QPI grading system(1.0 - 5.0) will be shown at the problems list at the leftmost part of the dialog box, indicating the grade of the code submitted by the user. The timer will also reset to 0, indicating how much time has passed since the recent submission.
+
+The user is free to try and submit again any time, and aim for a higher score.
+
 ### Admin Interface
 
 After opening codieval.admin.ProblemsManager, you have control over the administration side of the system.

@@ -39,7 +39,6 @@ def possible_moves(existing, incoming, minimum_strokes):
 	return moves
 
 input = open('input.txt', 'r')
-output = open('output.txt', 'w')
 
 line = input.readline()
 
@@ -53,7 +52,6 @@ while line is not '':
 	for i in range(connections_count):
 		connections.append([int(point) for point in input.readline().rstrip('\n').split(' ')])
 
-	output.write(str(min([stroke_count(move) for move in possible_moves([], connections, 9999)])))
-	output.write('\n')
+	print(str(min([stroke_count(move) for move in possible_moves([], connections, 9999)])))
 
 	line = input.readline()

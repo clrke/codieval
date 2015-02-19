@@ -133,23 +133,16 @@ public class TeamQueue
 	 * BufferedReader reader for reading files.
 	 */
 	static BufferedReader reader;
-	static PrintWriter writer;
 
 	/**
 	 * Main function
 	 */
 	public static void main(String[] args)
 	{
-		if(args.length != 2)
-		{
-			System.out.println("Incorrect input.\nFormat:\t\tjava TeamQueue <input file> <output file>\nExample:\tjava TeamQueue input.txt output.txt");
-			return;
-		}
-
 		try
 		{
-			reader = new BufferedReader(new FileReader(new File(args[0])));
-			writer = new PrintWriter(new FileWriter(new File(args[1])));
+			reader = new BufferedReader(new FileReader(new File("input.txt")));
+
 			int t;
 			int k = 1;
 
@@ -183,7 +176,7 @@ public class TeamQueue
 				int commandsIssued = 0;
 
 				// Scenario k
-				writer.println(String.format("Scenario #%d:", k++));
+				System.out.println(String.format("Scenario #%d:", k++));
 
 				// while command is not equal to STOP
 				while(!(command = reader.readLine().split(" "))[0].equals("STOP"))
@@ -200,7 +193,7 @@ public class TeamQueue
 					// If DEQUEUE, process the first element and remove it from queue
 					else if(command[0].equals("DEQUEUE"))
 					{
-						writer.println(teamQueue.dequeue());
+						System.out.println(teamQueue.dequeue());
 					}
 					// If none of the above, throw an error exception
 					else
@@ -209,10 +202,9 @@ public class TeamQueue
 					}
 					commandsIssued++;
 				}
-				writer.println();
+				System.out.println();
 			}
 			reader.close();
-			writer.close();
 		}
 		catch(FileNotFoundException error)
 		{

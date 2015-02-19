@@ -9,17 +9,15 @@ public class Problem8
 		try
 		{
 			BufferedReader reader = new BufferedReader(new FileReader(file));
-			PrintWriter writer = new PrintWriter(new FileWriter(new File("output.txt")));
 
 			int T = Integer.parseInt(reader.readLine());
 
 			for(int t = 0; t < T; t++) {
 				String input = reader.readLine();
-				writer.println(String.format("Case #%d: %s", t+1, minimumSeconds(input).toString()));
+				System.out.println(String.format("Case #%d: %s", t+1, minimumSeconds(input).toString()));
 			}
 
 			reader.close();
-			writer.close();
 		}
 		catch(Exception error)
 		{
@@ -71,6 +69,6 @@ public class Problem8
 
 	public static void main(String[] args)
 	{
-		new Problem8(new File(args[0]));
+		new Problem8(new File("input.txt"));
 	}
 }

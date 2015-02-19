@@ -3,23 +3,6 @@ Code Evaluator
 
 This is a system for automatically evaluating student code with appropriate grades. It may also be used for programming competitions.
 
-### Installation
-
-Clone this repo using:
-
-	$ git clone http://github.com/arkeidolon/codieval
-
-Install the following compilers (ignore the programming languages you don't need):
-
-| Programming Languages | Compilers used by Codieval | Recommended download links |
-| --------------------- | -------------------------- | -------------------------- |
-| C		        | gcc			     | https://gcc.gnu.org/releases.html or http://sourceforge.net/projects/mingw/files/latest/download?source=files       |
-| C#    	        | csc			     | http://msdn.microsoft.com/en-us/library/dd831853.aspx |
-| Java		        | javac & java		     | http://www.oracle.com/technetwork/java/javase/downloads/index.html |
-| Python	        | python		     | https://www.python.org/downloads/ |
-
-Make sure to include the compilers' directories to the system PATH.
-
 ### Folder structure
 
 	codieval/
@@ -65,6 +48,23 @@ Make sure to include the compilers' directories to the system PATH.
 
 __Note:__ The * means that naming the user's source codes and is up to the user.
 
+## Installation
+
+Clone this repo using:
+
+	$ git clone http://github.com/arkeidolon/codieval
+
+Install the following compilers (ignore the programming languages you don't need):
+
+| Programming Languages | Compilers used by Codieval | Recommended download links |
+| --------------------- | -------------------------- | -------------------------- |
+| C		        | gcc			     | https://gcc.gnu.org/releases.html or http://sourceforge.net/projects/mingw/files/latest/download?source=files       |
+| C#    	        | csc			     | http://msdn.microsoft.com/en-us/library/dd831853.aspx |
+| Java		        | javac & java		     | http://www.oracle.com/technetwork/java/javase/downloads/index.html |
+| Python	        | python		     | https://www.python.org/downloads/ |
+
+Make sure to include the compilers' directories to the system PATH.
+
 ### How to compile
 
 On the __codieval root folder__, run
@@ -90,6 +90,8 @@ On the __codieval root folder__, compile and run codieval/admin/ProblemsManager.
 	$ javac codieval/admin/ProblemsManager.java
 	$ java codieval.admin.ProblemsManager
 
+## User Manual
+
 ### Admin Interface
 
 After opening codieval.admin.ProblemsManager, you have control over the administration side of the program.
@@ -112,6 +114,6 @@ Upon clicking the New Problem button, a new dialog box will be shown for the inp
 
 Once you have saved your problem, you might need to restart the Problems Manager in order for the new problem to show up in the problems list.
 
-### Deployment
+## Deployment
 
 After making a jar file, delete the codieval/ folder containing all the source codes, to avoid the users from tinkering with the code and recompiling it, possibly changing the mechanics of the system.

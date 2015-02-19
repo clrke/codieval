@@ -12,7 +12,6 @@ public class Complexity {
         for(int i = 0; i < lexer.size(); i++)
         {
             String token = lexer.get(i).toString();
-            System.out.println(token);
 
             if(token.equals("for")) {
                 int[] analysis = depthOfForLoop(lexer, i);
@@ -39,7 +38,6 @@ public class Complexity {
 
             for(; i < lexer.size(); i++) {
                 String token = lexer.get(i).toString();
-                System.out.println("for loop 2! " + token);
 
                 if(token.equals("{")) {
                     curlyBraces++;
@@ -65,7 +63,6 @@ public class Complexity {
             for(; i < lexer.size(); i++) {
                 String token = lexer.get(i).toString();
 
-                System.out.println("for loop 3! " + token);
                 if(token.equals(";")) {
                     break;
                 } else if(token.equals("for")) {
@@ -90,7 +87,6 @@ public class Complexity {
 
         for(; i < lexer.size(); i++) {
             String token = lexer.get(i).toString();
-            System.out.println("parenthesis " + token);
             if(token.equals("(")) {
                 parentheses++;
             } else if(token.equals(")")) {

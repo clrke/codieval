@@ -97,20 +97,20 @@ public Evaluator2() {
 
 	problems = new ArrayList();
 
-	File problemsDirectory = new File("..\\problems");
+	File problemsDirectory = new File("problems");
 	for (String name : problemsDirectory.list()) {
-		File file = new File("..\\problems\\"+name);
+		File file = new File("problems/"+name);
 		if(file.isDirectory()) {
 			try {
 				ArrayList<String> fileContents = new ArrayList<String>();
 
-				BufferedReader br = new BufferedReader(new FileReader(new File("..\\problems\\"+name+"\\desc.germ")));
+				BufferedReader br = new BufferedReader(new FileReader(new File("problems/"+name+"/desc.germ")));
 
 				for(String line = br.readLine(); line != null; line = br.readLine())
 					fileContents.add(line);
 
 				br.close();
-				problems.add(new Problem(FileSystems.getDefault().getPath("..\\problems\\"+name, "input.txt"), fileContents));
+				problems.add(new Problem(FileSystems.getDefault().getPath("problems/"+name, "input.txt"), fileContents));
 			}
 			catch(IOException e) {
 				System.out.println(e.getMessage());
